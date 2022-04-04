@@ -24,6 +24,10 @@ Route::get('/', function () {
     ]);
 });
 
+Route::inertia('/about', 'About');
+
+Route::resource('users', \App\Http\Controllers\UsersController::class);
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
