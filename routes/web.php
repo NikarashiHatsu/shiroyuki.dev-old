@@ -25,6 +25,8 @@ Route::get('/', function () {
 });
 
 Route::inertia('/about', 'About');
+Route::inertia('/persistent-page-1', 'PersistentPage1');
+Route::inertia('/persistent-page-2', 'PersistentPage2');
 
 Route::resource('users', \App\Http\Controllers\UsersController::class);
 

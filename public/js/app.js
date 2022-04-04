@@ -4860,6 +4860,47 @@ function Authenticated(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/Layouts/CustomLayout.js":
+/*!**********************************************!*\
+  !*** ./resources/js/Layouts/CustomLayout.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ CustomLayout)
+/* harmony export */ });
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function CustomLayout(_ref) {
+  var children = _ref.children;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("main", {
+    className: "mx-auto max-w-xl",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("header", {
+      className: "border-b py-4 mb-4 fixed top-0 bg-white max-w-xl w-full shadow px-4",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link, {
+        href: "/persistent-page-1",
+        children: "Page 1"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link, {
+        href: "/persistent-page-2",
+        className: "ml-4",
+        children: "Page 2"
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("article", {
+      className: "pt-20",
+      children: children
+    })]
+  });
+}
+
+/***/ }),
+
 /***/ "./resources/js/Layouts/Guest.js":
 /*!***************************************!*\
   !*** ./resources/js/Layouts/Guest.js ***!
@@ -5595,6 +5636,139 @@ function Dashboard(props) {
         })
       })
     })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/PersistentPage1.js":
+/*!***********************************************!*\
+  !*** ./resources/js/Pages/PersistentPage1.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Layouts_CustomLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/CustomLayout */ "./resources/js/Layouts/CustomLayout.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+var PersistentPage1 = function PersistentPage1() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+      className: "text-3xl mb-4",
+      children: "Welcome to Persistent Page 1"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+      className: "mb-4",
+      children: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget ligula odio. Duis ut rutrum mi. Nullam ut mi non lorem ullamcorper condimentum. Pellentesque turpis augue, tincidunt accumsan neque at, tristique condimentum sem. Morbi non enim eget elit dignissim malesuada a a ligula. Pellentesque volutpat, velit ac vestibulum rutrum, mi elit facilisis dui, in pulvinar erat mi id nunc. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis et ante sit amet justo venenatis hendrerit. Vestibulum volutpat eget turpis et tempus. Donec at aliquam leo."
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+      className: "mb-4",
+      children: "Sed rhoncus finibus sapien, ut aliquet orci imperdiet eget. Proin fermentum molestie odio vitae lacinia. Fusce euismod, purus eu convallis volutpat, tellus mauris bibendum odio, vitae tincidunt diam diam sit amet erat. Fusce vel est a felis scelerisque semper. Morbi auctor porttitor ligula, sed gravida odio tempus sit amet. Vestibulum non faucibus risus. Nullam tincidunt elit id nisi imperdiet varius. Suspendisse arcu enim, tincidunt eu libero vitae, pretium porttitor orci. Fusce vel semper justo. Etiam gravida ac est sed rutrum. Ut ultrices condimentum augue, sit amet tempor ligula sollicitudin id. Etiam faucibus, tellus a iaculis condimentum, diam eros pulvinar diam, ac facilisis nunc urna et nunc. Pellentesque ante ante, pellentesque eu orci ac, faucibus blandit lectus. Quisque sollicitudin mauris non scelerisque faucibus. Ut vitae massa leo."
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+      className: "mb-4",
+      children: "Fusce volutpat, magna non tempus fringilla, odio mauris dapibus urna, nec eleifend erat tortor a odio. Maecenas nisl quam, mattis quis ullamcorper nec, volutpat eu elit. Vestibulum viverra porta est at sagittis. Fusce ex sapien, facilisis ultrices egestas sit amet, feugiat a velit. Nam imperdiet dolor sed eros lobortis laoreet. Suspendisse sed quam ac odio feugiat pharetra id sit amet purus. Etiam maximus augue ut elementum dignissim. Nam maximus, ipsum et hendrerit gravida, magna odio auctor nunc, eu mollis tellus erat id tellus. Praesent quis luctus dui. Pellentesque fermentum, tortor ut fermentum ullamcorper, ipsum velit dapibus felis, quis dignissim erat dolor sit amet elit."
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+      className: "mb-4",
+      children: "Donec odio tellus, fermentum et ipsum id, tristique pharetra lorem. Sed sit amet eros enim. Nulla id viverra turpis. Etiam non imperdiet nulla, at molestie massa. Phasellus convallis suscipit dui, ut accumsan nunc elementum vitae. Maecenas tempor dui eget urna congue convallis nec ac purus. Cras vitae urna in libero maximus maximus vel eget ante. Proin nisi arcu, vulputate non semper at, ornare a mi. Praesent eget nibh venenatis magna scelerisque aliquet nec sed nisi. Vestibulum ac dui nibh. Nunc eu nunc quis sem aliquam fermentum sed ac lorem. Cras imperdiet, libero id efficitur dapibus, quam tortor tempor erat, nec tincidunt neque massa vitae urna. Integer diam nibh, pharetra nec blandit ultricies, venenatis in erat."
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+      className: "mb-4",
+      children: "In convallis aliquet nisi in rutrum. Aenean rhoncus ante id auctor efficitur. In vestibulum nisi ac nunc elementum sodales. Etiam in ex pellentesque, dignissim lacus in, dapibus metus. In eu urna non tortor porttitor mollis sed eget arcu. Donec tincidunt justo sed velit luctus, non aliquam quam fermentum. Nam tincidunt lorem est, ac faucibus lectus dictum et. Duis vehicula malesuada magna id interdum. Vestibulum varius ligula ex. Integer pellentesque, quam at maximus vulputate, enim odio tincidunt risus, vestibulum venenatis elit quam et tortor. Pellentesque at ex posuere eros consequat lobortis vel sed tellus. Aenean consectetur augue eu viverra placerat."
+    })]
+  });
+};
+
+PersistentPage1.layout = function (page) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Layouts_CustomLayout__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    children: page
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PersistentPage1);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/PersistentPage2.js":
+/*!***********************************************!*\
+  !*** ./resources/js/Pages/PersistentPage2.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Layouts_CustomLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/CustomLayout */ "./resources/js/Layouts/CustomLayout.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+var PersistentPage2 = function PersistentPage2() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+      className: "text-3xl mb-4",
+      children: "Welcome to Persistent Page 2"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+      className: "mb-4",
+      children: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mollis odio vitae justo sollicitudin, quis euismod ex auctor. Nunc gravida urna tristique dui volutpat pretium. Cras faucibus metus et diam dictum blandit. Nunc nec arcu odio. Nam a nisl non enim malesuada pellentesque tempus a orci. Donec mollis ultricies nibh, eget placerat sem. Proin faucibus elit enim, eu dignissim eros dapibus vitae. Aliquam feugiat a odio et cursus. Nullam eget placerat diam. Fusce eu diam facilisis, eleifend massa non, convallis quam. Aliquam erat volutpat. Phasellus consequat lacus et molestie mattis. Maecenas ullamcorper pulvinar diam, interdum elementum lacus gravida id. Fusce a eleifend erat, a lacinia dui. Nam sed tellus lacus."
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+      className: "mb-4",
+      children: "Vestibulum rhoncus tortor quis nunc pharetra, sit amet tempor neque rhoncus. Curabitur dictum magna est. Vivamus felis augue, imperdiet ornare ultrices vel, accumsan quis ex. Nunc cursus mollis lacus vel tempus. Donec et mauris laoreet, mollis lacus tincidunt, placerat mi. Integer tincidunt nulla ac dui pharetra dictum. Aliquam gravida mattis orci eget pharetra. Nulla non ex posuere, gravida magna quis, molestie sem. Sed ultrices in tellus a ultricies. Sed aliquet lobortis enim, sit amet fermentum neque pulvinar quis. Ut faucibus aliquet odio, a condimentum justo. Donec sed odio ipsum."
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+      className: "mb-4",
+      children: "Maecenas ipsum tellus, bibendum eu diam sed, posuere dignissim neque. Cras ullamcorper leo quis neque sollicitudin lacinia. Integer sit amet diam a quam egestas efficitur a a quam. Cras vehicula purus a luctus tempus. Nunc blandit, ipsum ut lobortis rutrum, urna velit bibendum ante, eget consequat nulla mauris at ligula. Donec aliquam nibh magna. Donec nec venenatis magna, nec mollis risus. Quisque eget eros scelerisque, tincidunt libero eget, tempor purus. Nullam egestas lobortis ipsum, id posuere tellus pellentesque eget."
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+      className: "mb-4",
+      children: "Aliquam sollicitudin lacus leo, nec hendrerit ante aliquam eget. Duis aliquam nulla vel tempus fringilla. Nunc bibendum nunc libero, vel efficitur lacus faucibus vel. Nullam magna libero, porta ac risus volutpat, placerat luctus nulla. Duis quis sagittis nisi. Ut magna ante, fermentum in lectus at, iaculis porta odio. Donec dignissim id nulla eget facilisis. Duis elementum tempor lorem, vel scelerisque dui iaculis eget. Cras dictum velit eu enim ornare sagittis. Nullam sit amet enim ut turpis dapibus efficitur nec at nibh. Aenean vitae consequat lectus. Suspendisse id egestas arcu, eget feugiat erat. Morbi vel nisl augue. Sed eu erat ligula. Morbi eu neque augue. Morbi ultrices quam quis egestas consequat."
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+      className: "mb-4",
+      children: "Nulla nec aliquam diam. Cras quis aliquet diam. Morbi varius sit amet neque in lobortis. Suspendisse sodales nisl sit amet eros sodales gravida. Integer placerat justo ac purus dignissim, id molestie felis malesuada. Curabitur quis imperdiet metus. Morbi elit eros, volutpat non ullamcorper ac, dapibus sed enim. Integer vitae mauris eros."
+    })]
+  });
+};
+
+PersistentPage2.layout = function (page) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Layouts_CustomLayout__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    children: page
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PersistentPage2);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Users/Create.js":
+/*!********************************************!*\
+  !*** ./resources/js/Pages/Users/Create.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Create)
+/* harmony export */ });
+/* harmony import */ var _Layouts_CustomLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/CustomLayout */ "./resources/js/Layouts/CustomLayout.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+function Create() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Layouts_CustomLayout__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    children: "Test"
   });
 }
 
@@ -59329,6 +59503,12 @@ var map = {
 	"./Auth/VerifyEmail.js": "./resources/js/Pages/Auth/VerifyEmail.js",
 	"./Dashboard": "./resources/js/Pages/Dashboard.js",
 	"./Dashboard.js": "./resources/js/Pages/Dashboard.js",
+	"./PersistentPage1": "./resources/js/Pages/PersistentPage1.js",
+	"./PersistentPage1.js": "./resources/js/Pages/PersistentPage1.js",
+	"./PersistentPage2": "./resources/js/Pages/PersistentPage2.js",
+	"./PersistentPage2.js": "./resources/js/Pages/PersistentPage2.js",
+	"./Users/Create": "./resources/js/Pages/Users/Create.js",
+	"./Users/Create.js": "./resources/js/Pages/Users/Create.js",
 	"./Users/Index": "./resources/js/Pages/Users/Index.js",
 	"./Users/Index.js": "./resources/js/Pages/Users/Index.js",
 	"./Users/Show": "./resources/js/Pages/Users/Show.js",

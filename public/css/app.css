@@ -689,6 +689,9 @@ select {
 .mt-1 {
   margin-top: 0.25rem;
 }
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
 .block {
   display: block;
 }
@@ -794,6 +797,12 @@ select {
 }
 .cursor-default {
   cursor: default;
+}
+.scroll-m-4 {
+  scroll-margin: 1rem;
+}
+.scroll-m-8 {
+  scroll-margin: 2rem;
 }
 .list-inside {
   list-style-position: inside;
@@ -1012,6 +1021,15 @@ select {
 .pt-6 {
   padding-top: 1.5rem;
 }
+.pb-4 {
+  padding-bottom: 1rem;
+}
+.pt-16 {
+  padding-top: 4rem;
+}
+.pt-20 {
+  padding-top: 5rem;
+}
 .text-left {
   text-align: left;
 }
@@ -1040,6 +1058,10 @@ select {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 .font-medium {
   font-weight: 500;
