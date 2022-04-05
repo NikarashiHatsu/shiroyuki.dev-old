@@ -1,4 +1,5 @@
 import Authenticated from "@/Layouts/Authenticated";
+import ExtendedHead from "@/Layouts/ExtendedHead";
 import { Head, Link } from "@inertiajs/inertia-react";
 import React from "react";
 
@@ -19,7 +20,15 @@ export default function Show(props) {
                 </div>
             }
         >
-            <Head title={ "Detail User: " + props.user.name } />
+            {/* <Head>
+                <title>Detail User: {props.user.name}</title>
+                <meta name="author" content={props.user.name} />
+                <meta name="description" content={"Detail User: " + props.user.name} />
+            </Head> */}
+            <ExtendedHead title={`Detail User: ${props.user.name}`}>
+                <meta name="author" content={props.user.name} />
+                <meta name="description" content={"Detail User: " + props.user.name} />
+            </ExtendedHead>
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
