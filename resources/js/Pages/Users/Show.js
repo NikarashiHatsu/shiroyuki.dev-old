@@ -1,5 +1,5 @@
 import Authenticated from "@/Layouts/Authenticated";
-import { Head } from "@inertiajs/inertia-react";
+import { Head, Link } from "@inertiajs/inertia-react";
 import React from "react";
 
 export default function Show(props) {
@@ -9,12 +9,12 @@ export default function Show(props) {
             errors={props.errors}
             header={
                 <div className="flex justify-between items-center">
-                    <a
+                    <Link
                         href={props.back_url}
                         className="transition-colors duration-300 ease-in-out bg-gray-500 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm"
                     >
                         Kembali
-                    </a>
+                    </Link>
                     <h2 className="font-semibold text-xl text-gray-800 leading-tight">Detail User: { props.user.name }</h2>
                 </div>
             }

@@ -1,5 +1,5 @@
 import Authenticated from "@/Layouts/Authenticated";
-import { Head } from "@inertiajs/inertia-react";
+import { Head, Link } from "@inertiajs/inertia-react";
 import React from "react";
 
 function UserList(props) {
@@ -8,12 +8,12 @@ function UserList(props) {
         <td className="border-x p-2">{props.user.name}</td>
         <td className="border-x p-2">{props.user.email}</td>
         <td className="border-x p-2">
-            <a
+            <Link
                 href={props.user.show_url}
                 className="transition-colors duration-300 ease-in-out bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm"
             >
                 Detail
-            </a>
+            </Link>
         </td>
     </tr>
 }
@@ -26,12 +26,12 @@ export default function Index(props) {
             header={
                 <div className="flex justify-between items-center">
                     <h2 className="font-semibold text-xl text-gray-800 leading-tight">Users</h2>
-                    <a
+                    <Link
                         href={props.create_url}
                         className="transition-colors duration-300 ease-in-out bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm"
                     >
                         Tambah
-                    </a>
+                    </Link>
                 </div>
             }
         >
