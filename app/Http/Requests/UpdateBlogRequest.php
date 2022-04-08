@@ -24,6 +24,7 @@ class UpdateBlogRequest extends FormRequest
     public function rules()
     {
         return [
+            'category_id' => ['required', 'integer', 'exists:categories,id'],
             'thumbnail' => ['required', 'image', 'max:2048'],
             'title' => ['required', 'string'],
             'description' => ['required'],

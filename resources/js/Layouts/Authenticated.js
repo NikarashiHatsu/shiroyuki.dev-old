@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { Head, Link } from '@inertiajs/inertia-react';
+import { Head, Link, usePage } from '@inertiajs/inertia-react';
 import Logo from './../../images/devsnote.svg';
-import { SignOut, House, Gauge, Gear, Note, Tag, ChatTeardropText, Users, List } from 'phosphor-react';
+import { SignOut, House, Gauge, Gear, Note, Tag, ChatTeardropText, Users, List, Plus, ArrowLeft } from 'phosphor-react';
+import Alert from '@/Components/Alert';
 
-export default function Authenticated({ auth, header, children }) {
+export default function Authenticated({ auth, header, headerPreAction, headerPreActionLink, headerPostAction, headerPostActionLink, children }) {
+    const { alert } = usePage().props;
+
     return (
         <>
             <Head>
@@ -11,7 +14,7 @@ export default function Authenticated({ auth, header, children }) {
                 <link rel="shortcut icon" href={Logo} type="image/x-icon" />
             </Head>
 
-            <div className='drawer drawer-mobile' data-theme="light">
+            <div className='drawer drawer-mobile bg-base-200' data-theme="light">
                 <input id="drawer" type="checkbox" className='drawer-toggle' />
                 <div className='drawer-content'>
                     <div className='flex md:hidden navbar bg-base-100'>
@@ -23,9 +26,41 @@ export default function Authenticated({ auth, header, children }) {
                     </div>
 
                     <main className='p-6'>
-                        <h5 className='font-semibold text-lg'>
-                            {header}
-                        </h5>
+                        <div className='flex justify-between items-center'>
+                            {headerPreAction && (
+                                <Link
+                                    href={headerPreActionLink}
+                                    className="btn btn-ghost"
+                                >
+                                    <ArrowLeft size={16} />
+                                    <span className='ml-2'>
+                                        {headerPreAction}
+                                    </span>
+                                </Link>
+                            )}
+                            <h5 className='font-semibold text-lg'>
+                                {header}
+                            </h5>
+                            {headerPostAction && (
+                                <Link
+                                    href={headerPostActionLink}
+                                    className="btn"
+                                >
+                                    <Plus size={16} />
+                                    <span className='ml-2'>
+                                        {headerPostAction}
+                                    </span>
+                                </Link>
+                            )}
+                        </div>
+
+                        {alert.message && (
+                            <Alert
+                                type={alert.type}
+                                message={alert.message}
+                            />
+                        )}
+
                         <div>
                             {children}
                         </div>

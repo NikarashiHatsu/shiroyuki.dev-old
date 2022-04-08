@@ -25,6 +25,7 @@ class StoreBlogRequest extends FormRequest
     {
         return [
             'user_id' => ['required', 'integer', 'exists:users,id'],
+            'category_id' => ['required', 'integer', 'exists:categories,id'],
             'slug' => ['required', 'string'],
             'thumbnail' => ['required', 'image', 'max:2048'],
             'title' => ['required', 'string'],

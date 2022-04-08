@@ -17,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         return Inertia::render('Category/Index', [
-            'categories' => Category::all(),
+            'categories' => Category::withCount('blogs')->get(),
         ]);
     }
 
@@ -28,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Category/Create');
     }
 
     /**
@@ -39,7 +39,21 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        try {
+            Category::create($data);
+        } catch (\Throwable $th) {
+            return redirect()->back()->with([
+                'alertType' => 'error',
+                'alertMessage' => 'Terjadi kesalahan: ' . $th->getMessage(),
+            ]);
+        }
+
+        return redirect()->back()->with([
+            'alertType' => 'success',
+            'alertMessage' => 'Berhasil menambah kategori.',
+        ]);
     }
 
     /**
@@ -61,7 +75,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return Inertia::render('Category/Edit', [
+            'category' => $category,
+        ]);
     }
 
     /**
@@ -73,7 +89,21 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $data = $request->validated();
+
+        try {
+            $category->update($data);
+        } catch (\Throwable $th) {
+            return redirect()->back()->with([
+                'alertType' => 'error',
+                'alertMessage' => 'Terjadi kesalahan: ' . $th->getMessage(),
+            ]);
+        }
+
+        return redirect()->back()->with([
+            'alertType' => 'success',
+            'alertMessage' => 'Berhasil memperbarui kategori.',
+        ]);
     }
 
     /**
@@ -84,6 +114,18 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        try {
+            $category->delete();
+        } catch (\Throwable $th) {
+            return redirect()->back()->with([
+                'alertType' => 'error',
+                'alertMessage' => 'Terjadi kesalahan: ' . $th->getMessage(),
+            ]);
+        }
+
+        return redirect()->back()->with([
+            'alertType' => 'success',
+            'alertMessage' => 'Berhasil menghapus kategori.',
+        ]);
     }
 }
