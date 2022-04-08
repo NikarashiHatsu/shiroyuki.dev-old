@@ -37,7 +37,7 @@ export default function Authenticated({ auth, header, children }) {
                         <div className='border-b sticky top-0 border-r px-3 py-3 z-50 backdrop-blur'>
                             <Link
                                 className='flex items-center'
-                                href={ route('dashboard') }
+                                href={ route('dashboard.index') }
                             >
                                 <img src={Logo} className='w-12 h-12' />
                                 <div className='ml-2 flex flex-col'>
@@ -61,7 +61,7 @@ export default function Authenticated({ auth, header, children }) {
                                 </Link>
                             </li>
                             <li>
-                                <Link href={ route('dashboard') }>
+                                <Link href={ route('dashboard.index') }>
                                     <Gauge size={16} />
                                     <span>
                                         Dashboard
@@ -75,7 +75,7 @@ export default function Authenticated({ auth, header, children }) {
                                 </span>
                             </li>
                             <li>
-                                <Link>
+                                <Link href={ route('dashboard.category.index') }>
                                     <Tag size={16} />
                                     <span>
                                         Kategori

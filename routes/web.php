@@ -24,8 +24,14 @@ Route::get('/', function () {
     ]);
 })->name('index');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::prefix('dashboard')
+    ->as('dashboard.')
+    ->middleware(['auth', 'verified'])
+    ->group(function() {
+        Route::inertia('/', 'Dashboard')->name('index');
+        Route::resources([
+            'category' => \App\Http\Controllers\CategoryController::class,
+        ]);
+    });
 
 require __DIR__.'/auth.php';

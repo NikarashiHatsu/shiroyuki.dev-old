@@ -7,8 +7,6 @@ import { InertiaProgress } from '@inertiajs/progress';
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
-InertiaProgress.init();
-
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => require(`./Pages/${name}`),
@@ -17,4 +15,9 @@ createInertiaApp({
     },
 });
 
-InertiaProgress.init({ color: '#4B5563' });
+InertiaProgress.init({
+    delay: 250,
+    color: '#ef4444',
+    includeCSS: true,
+    showSpinner: false,
+});
