@@ -3,7 +3,7 @@ import { Head, Link } from '@inertiajs/inertia-react';
 import Logo from './../../images/devsnote.svg';
 import { SignOut, House, Gauge, Gear, Note, Tag, ChatTeardropText, Users, List } from 'phosphor-react';
 
-export default function Authenticated({ auth, children }) {
+export default function Authenticated({ auth, header, children }) {
     return (
         <>
             <Head>
@@ -14,17 +14,22 @@ export default function Authenticated({ auth, children }) {
             <div className='drawer drawer-mobile' data-theme="light">
                 <input id="drawer" type="checkbox" className='drawer-toggle' />
                 <div className='drawer-content'>
-                    <div className='navbar bg-base-100'>
-                        <div className='flex-none flex md:hidden'>
+                    <div className='flex md:hidden navbar bg-base-100'>
+                        <div className='flex-none'>
                             <label htmlFor="drawer" className='btn btn-square btn-ghost'>
                                 <List size={16} />
                             </label>
                         </div>
                     </div>
 
-                    <div className='p-6'>
-                        {children}
-                    </div>
+                    <main className='p-6'>
+                        <h5 className='font-semibold text-lg'>
+                            {header}
+                        </h5>
+                        <div>
+                            {children}
+                        </div>
+                    </main>
                 </div>
                 <div className='drawer-side border-r'>
                     <label htmlFor="drawer" className='drawer-overlay'></label>

@@ -7,6 +7,7 @@ export default function Dashboard(props) {
         <Authenticated
             auth={props.auth}
             errors={props.errors}
+            header="Dashboard"
         >
             <Head title="Dashboard" />
         </Authenticated>
