@@ -25,8 +25,19 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'email' => ['required', 'email'],
-            'password' => ['required', 'string'],
+            'email' => ['required', 'email', 'unique:users,email,' . $this->user->id],
+            'password' => ['nullable', 'string', 'confirmed'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Nama pengguna tidak boleh kosong.',
+            'email.required' => 'Email pengguna tidak boleh kosong.',
+            'email.email' => 'Email pengguna harus berisi email yang valid.',
+            'email.unique' => 'Email pengguna sudah terdaftar.',
+            'password.confirmed' => 'Kata sandi harus sama dengan kolom konfirmasi.',
         ];
     }
 }

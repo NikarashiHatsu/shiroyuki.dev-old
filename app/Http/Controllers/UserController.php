@@ -17,7 +17,7 @@ class UserController extends Controller
     public function index()
     {
         return Inertia::render('User/Index', [
-            'users' => User::all(),
+            'users' => User::withCount(['blogs', 'comments'])->get(['id', 'name', 'email']),
         ]);
     }
 
@@ -28,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('User/Create');
     }
 
     /**
@@ -39,7 +39,19 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        //
+        try {
+            User::create($request->validated());
+        } catch (\Throwable $th) {
+            return redirect()->back()->with([
+                'alertType' => 'error',
+                'alertMessage' => 'Terjadi kesalahan: ' . $th->getMessage(),
+            ]);
+        }
+
+        return redirect()->back()->with([
+            'alertType' => 'success',
+            'alertMessage' => 'Berhasil menambah pengguna.',
+        ]);
     }
 
     /**
@@ -61,7 +73,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return Inertia::render('User/Edit', [
+            'user' => $user,
+        ]);
     }
 
     /**
@@ -73,7 +87,19 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        //
+        try {
+            $user->update($request->validated());
+        } catch (\Throwable $th) {
+            return redirect()->back()->with([
+                'alertType' => 'error',
+                'alertMessage' => 'Terjadi kesalahan: ' . $th->getMessage(),
+            ]);
+        }
+
+        return redirect()->back()->with([
+            'alertType' => 'success',
+            'alertMessage' => 'Berhasil mengubah pengguna.',
+        ]);
     }
 
     /**
@@ -84,6 +110,18 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        try {
+            $user->delete();
+        } catch (\Throwable $th) {
+            return redirect()->back()->with([
+                'alertType' => 'error',
+                'alertMessage' => 'Terjadi kesalahan: ' . $th->getMessage(),
+            ]);
+        }
+
+        return redirect()->back()->with([
+            'alertType' => 'success',
+            'alertMessage' => 'Berhasil menghapus pengguna.',
+        ]);
     }
 }

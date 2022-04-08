@@ -25,8 +25,20 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'email' => ['required', 'email'],
-            'password' => ['required', 'string'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => ['required', 'string', 'confirmed'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Nama pengguna tidak boleh kosong.',
+            'email.required' => 'Email pengguna tidak boleh kosong.',
+            'email.email' => 'Email pengguna harus berisi email yang valid.',
+            'email.unique' => 'Email pengguna sudah terdaftar.',
+            'password.required' => 'Kata sandi tidak boleh kosong.',
+            'password.confirmed' => 'Kata sandi harus sama dengan kolom konfirmasi.',
         ];
     }
 }
