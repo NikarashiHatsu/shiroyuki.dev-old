@@ -5,7 +5,8 @@ import { SignOut, House, Gauge, Gear, Note, Tag, ChatTeardropText, Users, List, 
 import Alert from '@/Components/Alert';
 
 export default function Authenticated({ auth, header, headerPreAction, headerPreActionLink, headerPostAction, headerPostActionLink, children }) {
-    const { alert, url } = usePage().props;
+    const { alert } = usePage().props;
+    const { component } = usePage();
 
     return (
         <>
@@ -17,43 +18,40 @@ export default function Authenticated({ auth, header, headerPreAction, headerPre
             <div className='drawer drawer-mobile bg-base-100' data-theme="light">
                 <input id="drawer" type="checkbox" className='drawer-toggle' />
                 <div className='drawer-content'>
-                    <div className='flex md:hidden navbar bg-base-100'>
-                        <div className='flex-none'>
+                    <div className='flex navbar bg-base-100 border-b justify-between'>
+                        <div className='block lg:hidden'>
                             <label htmlFor="drawer" className='btn btn-square btn-ghost'>
                                 <List size={16} />
                             </label>
                         </div>
+                        {headerPreAction && (
+                            <Link
+                                href={headerPreActionLink}
+                                className="btn btn-ghost"
+                            >
+                                <ArrowLeft size={16} />
+                                <span className='ml-2'>
+                                    {headerPreAction}
+                                </span>
+                            </Link>
+                        )}
+                        <h5 className='font-semibold text-lg mx-4'>
+                            {header}
+                        </h5>
+                        {headerPostAction && (
+                            <Link
+                                href={headerPostActionLink}
+                                className="btn btn-ghost"
+                            >
+                                <Plus size={16} />
+                                <span className='ml-2'>
+                                    {headerPostAction}
+                                </span>
+                            </Link>
+                        )}
                     </div>
 
                     <main className='p-6'>
-                        <div className='flex justify-between items-center'>
-                            {headerPreAction && (
-                                <Link
-                                    href={headerPreActionLink}
-                                    className="btn btn-ghost"
-                                >
-                                    <ArrowLeft size={16} />
-                                    <span className='ml-2'>
-                                        {headerPreAction}
-                                    </span>
-                                </Link>
-                            )}
-                            <h5 className='font-semibold text-lg'>
-                                {header}
-                            </h5>
-                            {headerPostAction && (
-                                <Link
-                                    href={headerPostActionLink}
-                                    className="btn"
-                                >
-                                    <Plus size={16} />
-                                    <span className='ml-2'>
-                                        {headerPostAction}
-                                    </span>
-                                </Link>
-                            )}
-                        </div>
-
                         {alert.message && (
                             <Alert
                                 type={alert.type}
@@ -98,7 +96,7 @@ export default function Authenticated({ auth, header, headerPreAction, headerPre
                             <li>
                                 <Link
                                     href={ route('dashboard.index') }
-                                    className={ url }
+                                    className={ component === 'Dashboard' ? 'active' : '' }
                                 >
                                     <Gauge size={16} />
                                     <span>
@@ -113,7 +111,10 @@ export default function Authenticated({ auth, header, headerPreAction, headerPre
                                 </span>
                             </li>
                             <li>
-                                <Link href={ route('dashboard.category.index') }>
+                                <Link
+                                    href={ route('dashboard.category.index') }
+                                    className={ component.startsWith('Category') ? 'active' : '' }
+                                >
                                     <Tag size={16} />
                                     <span>
                                         Kategori
@@ -121,7 +122,10 @@ export default function Authenticated({ auth, header, headerPreAction, headerPre
                                 </Link>
                             </li>
                             <li>
-                                <Link href={ route('dashboard.blog.index') }>
+                                <Link
+                                    href={ route('dashboard.blog.index') }
+                                    className={ component.startsWith('Blog') ? 'active' : '' }
+                                >
                                     <Note size={16} />
                                     <span>
                                         Blog
@@ -129,7 +133,10 @@ export default function Authenticated({ auth, header, headerPreAction, headerPre
                                 </Link>
                             </li>
                             <li>
-                                <Link href={ route('dashboard.comment.index') }>
+                                <Link
+                                    href={ route('dashboard.comment.index') }
+                                    className={ component.startsWith('Comment') ? 'active' : '' }
+                                >
                                     <ChatTeardropText size={16} />
                                     <span>
                                         Komentar
@@ -137,7 +144,10 @@ export default function Authenticated({ auth, header, headerPreAction, headerPre
                                 </Link>
                             </li>
                             <li>
-                                <Link href={ route('dashboard.user.index') }>
+                                <Link
+                                    href={ route('dashboard.user.index') }
+                                    className={ component.startsWith('User') ? 'active' : '' }
+                                >
                                     <Users size={16} />
                                     <span>
                                         Pengguna
@@ -151,7 +161,10 @@ export default function Authenticated({ auth, header, headerPreAction, headerPre
                                 </span>
                             </li>
                             <li>
-                                <Link href={ route('dashboard.setting.index') }>
+                                <Link
+                                    href={ route('dashboard.setting.index') }
+                                    className={ component.startsWith('Setting') ? 'active' : '' }
+                                >
                                     <Gear size={16} />
                                     <span>
                                         Pengaturan

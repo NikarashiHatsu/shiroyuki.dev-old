@@ -16,7 +16,7 @@ function Categories(categories) {
 
     return categories.map((category, index) => (
         <tr key={category.id} className="border-t">
-            <td>{index + 1}</td>
+            <th>{index + 1}</th>
             <td>{category.name}</td>
             <td>{category.blogs_count} blog</td>
             <td>
@@ -60,19 +60,21 @@ export default function Index(props) {
         >
             <Head title="Kategori" />
 
-            <table className="table table-compact w-full mt-6">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Kategori</th>
-                        <th>Jumlah blog dengan kategori ini</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    { Categories(props.categories) }
-                </tbody>
-            </table>
+            <div className="overflow-x-auto">
+                <table className="table table-compact w-full mt-6">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Kategori</th>
+                            <th>Jumlah blog dengan kategori ini</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        { Categories(props.categories) }
+                    </tbody>
+                </table>
+            </div>
         </Authenticated>
     );
 }
