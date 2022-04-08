@@ -113,7 +113,7 @@ export default function Authenticated({ auth, header, children }) {
                                 </span>
                             </li>
                             <li>
-                                <Link>
+                                <Link href={ route('dashboard.setting.index') }>
                                     <Gear size={16} />
                                     <span>
                                         Pengaturan
