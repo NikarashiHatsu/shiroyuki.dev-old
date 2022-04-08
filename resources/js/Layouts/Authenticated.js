@@ -91,7 +91,7 @@ export default function Authenticated({ auth, header, children }) {
                                 </Link>
                             </li>
                             <li>
-                                <Link>
+                                <Link href={ route('dashboard.comment.index') }>
                                     <ChatTeardropText size={16} />
                                     <span>
                                         Komentar
