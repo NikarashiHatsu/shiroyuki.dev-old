@@ -135,11 +135,11 @@ export default function Guest({ children }) {
                                     <span className='label-text'>Tag</span>
                                 </label>
                                 <div className="flex flex-wrap">
-                                    <Tag tag="Tag Testing 1" />
-                                    <Tag tag="Testing Tag 2" />
-                                    <Tag tag="3 Tag Testing" />
-                                    <Tag tag="Testing 4 Tag" />
-                                    <Tag tag="Tag 5 Testing" />
+                                    <Tag tag="Teknologi" />
+                                    <Tag tag="Pengembangan" />
+                                    <Tag tag="Laravel" />
+                                    <Tag tag="Flutter" />
+                                    <Tag tag="Kuliah" />
                                 </div>
                             </div>
                         </div>
