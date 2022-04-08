@@ -27,4 +27,11 @@ class StoreCategoryRequest extends FormRequest
             'name' => ['required', 'string'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Nama kategori harus diisi.',
+        ];
+    }
 }

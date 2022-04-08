@@ -27,4 +27,11 @@ class UpdateCategoryRequest extends FormRequest
             'name' => ['required', 'string'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Nama kategori harus diisi.',
+        ];
+    }
 }
