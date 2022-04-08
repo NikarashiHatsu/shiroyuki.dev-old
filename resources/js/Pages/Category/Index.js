@@ -7,7 +7,7 @@ function Categories(categories) {
     if (categories.length == 0) {
         return (
             <tr className="border-t">
-                <td colSpan="3" className="text-center">
+                <td colSpan="4" className="text-center">
                     Belum ada kategori
                 </td>
             </tr>

@@ -7,7 +7,7 @@ function Users(users) {
     if (users.length == 0) {
         return (
             <tr className="border-t">
-                <td colSpan="3" className="text-center">
+                <td colSpan="6" className="text-center">
                     Belum ada pengguna
                 </td>
             </tr>
