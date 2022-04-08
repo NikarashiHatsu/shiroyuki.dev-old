@@ -99,7 +99,7 @@ export default function Authenticated({ auth, header, children }) {
                                 </Link>
                             </li>
                             <li>
-                                <Link>
+                                <Link href={ route('dashboard.user.index') }>
                                     <Users size={16} />
                                     <span>
                                         Pengguna

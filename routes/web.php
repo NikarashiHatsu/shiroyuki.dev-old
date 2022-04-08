@@ -33,6 +33,7 @@ Route::prefix('dashboard')
             'category' => \App\Http\Controllers\CategoryController::class,
             'comment' => \App\Http\Controllers\CommentController::class,
             'blog' => \App\Http\Controllers\BlogController::class,
+            'user' => \App\Http\Controllers\UserController::class,
         ]);
     });
 
