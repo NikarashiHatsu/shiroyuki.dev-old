@@ -8,7 +8,7 @@ function Categories(categories) {
         return (
             <tr className="border-t">
                 <td colSpan="3" className="text-center">
-                    Tidak ada kategori
+                    Belum ada kategori
                 </td>
             </tr>
         );
