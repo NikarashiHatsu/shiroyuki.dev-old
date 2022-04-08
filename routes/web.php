@@ -29,6 +29,7 @@ Route::prefix('dashboard')
     ->middleware(['auth', 'verified'])
     ->group(function() {
         Route::inertia('/', 'Dashboard')->name('index');
+        Route::inertia('/setting', 'Setting')->name('setting.index');
         Route::resources([
             'category' => \App\Http\Controllers\CategoryController::class,
             'comment' => \App\Http\Controllers\CommentController::class,
