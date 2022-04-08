@@ -4,6 +4,12 @@ import React from 'react';
 import SmallPost from '@/Components/SmallPost';
 import Tag from '@/Components/Tag';
 
+import DummyPostThumbnail1 from './../../images/post_dummies/mac2022.jpg';
+import DummyPostThumbnail2 from './../../images/post_dummies/code.jpg';
+import DummyPostThumbnail3 from './../../images/post_dummies/rails.jpg';
+import DummyPostThumbnail4 from './../../images/post_dummies/android.jpg';
+import DummyPostThumbnail5 from './../../images/post_dummies/flutter.jpg';
+
 export default function Guest({ children }) {
     return (
         <>
@@ -61,19 +67,19 @@ export default function Guest({ children }) {
                                 </label>
                                 <ol class="list-inside">
                                     <li className='mt-2'>
-                                        <Link>Kategori 1</Link>
+                                        <Link>Teknologi</Link>
                                     </li>
                                     <li className='mt-2'>
-                                        <Link>Kategori 2</Link>
+                                        <Link>Pengembangan</Link>
                                     </li>
                                     <li className='mt-2'>
-                                        <Link>Kategori 3</Link>
+                                        <Link>Laravel</Link>
                                     </li>
                                     <li className='mt-2'>
-                                        <Link>Kategori 4</Link>
+                                        <Link>Flutter</Link>
                                     </li>
                                     <li className='mt-2'>
-                                        <Link>Kategori 5</Link>
+                                        <Link>Kuliah</Link>
                                     </li>
                                 </ol>
                             </div>
@@ -82,11 +88,46 @@ export default function Guest({ children }) {
                                 <label className='label'>
                                     <span className='label-text'>Post Terakhir</span>
                                 </label>
-                                <SmallPost />
-                                <SmallPost />
-                                <SmallPost />
-                                <SmallPost />
-                                <SmallPost />
+                                <div>
+                                    <SmallPost
+                                        author="Hatsu Shiroyuki"
+                                        title="Mac 2022. Lebih tipis, lebih ringan, dan lebih kuat!"
+                                        formattedDate="8 April 2022"
+                                        thumbnail={DummyPostThumbnail1}
+                                    />
+                                </div>
+                                <div className='mt-4'>
+                                    <SmallPost
+                                        author="Hatsu Shiroyuki"
+                                        title="10 hal yang wajib diketahui programmer PHP di tahun 2022"
+                                        formattedDate="7 April 2022"
+                                        thumbnail={DummyPostThumbnail2}
+                                    />
+                                </div>
+                                <div className='mt-4'>
+                                    <SmallPost
+                                        author="Hatsu Shiroyuki"
+                                        title="Laravel, Ruby on Rails, atau Simfony? Berikut hal yang harus Anda ketahui sebelum memulai pengembangan menggunakan framework ini."
+                                        formattedDate="6 April 2022"
+                                        thumbnail={DummyPostThumbnail3}
+                                    />
+                                </div>
+                                <div className='mt-4'>
+                                    <SmallPost
+                                        author="Hatsu Shiroyuki"
+                                        title="Pengembangan Android, haruskah Anda memahami Java atau Kotlin sepenuhnya?"
+                                        formattedDate="5 April 2022"
+                                        thumbnail={DummyPostThumbnail4}
+                                    />
+                                </div>
+                                <div className='mt-4'>
+                                    <SmallPost
+                                        author="Hatsu Shiroyuki"
+                                        title="Flutter. Masa depan pengembangan multi-platform, atau kehancuran platform-specific development?"
+                                        formattedDate="4 April 2022"
+                                        thumbnail={DummyPostThumbnail5}
+                                    />
+                                </div>
                             </div>
 
                             <div className='flex flex-col mt-6'>
