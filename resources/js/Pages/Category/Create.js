@@ -3,7 +3,7 @@ import { Head, useForm } from "@inertiajs/inertia-react";
 import React from "react";
 import { FloppyDisk } from 'phosphor-react';
 
-export default function Edit(props) {
+export default function Create(props) {
     const { data, setData, post, reset, processing, errors } = useForm({
         'name': '',
     });
