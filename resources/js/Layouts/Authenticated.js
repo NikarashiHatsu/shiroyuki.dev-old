@@ -5,7 +5,7 @@ import { SignOut, House, Gauge, Gear, Note, Tag, ChatTeardropText, Users, List, 
 import Alert from '@/Components/Alert';
 
 export default function Authenticated({ auth, header, headerPreAction, headerPreActionLink, headerPostAction, headerPostActionLink, children }) {
-    const { alert } = usePage().props;
+    const { alert, url } = usePage().props;
 
     return (
         <>
@@ -14,7 +14,7 @@ export default function Authenticated({ auth, header, headerPreAction, headerPre
                 <link rel="shortcut icon" href={Logo} type="image/x-icon" />
             </Head>
 
-            <div className='drawer drawer-mobile bg-base-200' data-theme="light">
+            <div className='drawer drawer-mobile bg-base-100' data-theme="light">
                 <input id="drawer" type="checkbox" className='drawer-toggle' />
                 <div className='drawer-content'>
                     <div className='flex md:hidden navbar bg-base-100'>
@@ -68,8 +68,8 @@ export default function Authenticated({ auth, header, headerPreAction, headerPre
                 </div>
                 <div className='drawer-side border-r'>
                     <label htmlFor="drawer" className='drawer-overlay'></label>
-                    <div className='overflow-y-auto w-80 bg-white'>
-                        <div className='border-b sticky top-0 border-r px-3 py-3 z-50 backdrop-blur'>
+                    <div className='overflow-y-auto w-80 bg-base-200'>
+                        <div className='border-b sticky top-0 px-3 py-3 z-50 backdrop-blur'>
                             <Link
                                 className='flex items-center'
                                 href={ route('dashboard.index') }
@@ -96,7 +96,10 @@ export default function Authenticated({ auth, header, headerPreAction, headerPre
                                 </Link>
                             </li>
                             <li>
-                                <Link href={ route('dashboard.index') }>
+                                <Link
+                                    href={ route('dashboard.index') }
+                                    className={ url }
+                                >
                                     <Gauge size={16} />
                                     <span>
                                         Dashboard

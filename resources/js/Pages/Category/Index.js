@@ -6,7 +6,7 @@ import React from "react";
 function Categories(categories) {
     if (categories.length == 0) {
         return (
-            <tr className="border-y">
+            <tr className="border-t">
                 <td colSpan="3" className="text-center">
                     Tidak ada kategori
                 </td>
@@ -15,11 +15,11 @@ function Categories(categories) {
     }
 
     return categories.map((category, index) => (
-        <tr key={category.id} className="border-y">
-            <td className="border-x">{index + 1}</td>
-            <td className="border-x">{category.name}</td>
-            <td className="border-x">{category.blogs_count} blog</td>
-            <td className="border-x">
+        <tr key={category.id} className="border-t">
+            <td>{index + 1}</td>
+            <td>{category.name}</td>
+            <td>{category.blogs_count} blog</td>
+            <td>
                 <Link
                     href={ route('dashboard.category.edit', category.id) }
                     className="btn btn-success btn-sm"
@@ -60,13 +60,13 @@ export default function Index(props) {
         >
             <Head title="Kategori" />
 
-            <table className="table w-full mt-6">
+            <table className="table table-compact w-full mt-6">
                 <thead>
-                    <tr className="border-y">
-                        <th className="border-x">No</th>
-                        <th className="border-x">Nama Kategori</th>
-                        <th className="border-x">Jumlah blog dengan kategori ini</th>
-                        <th className="border-x">Aksi</th>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Kategori</th>
+                        <th>Jumlah blog dengan kategori ini</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
