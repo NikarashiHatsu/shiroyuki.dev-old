@@ -31,6 +31,7 @@ Route::prefix('dashboard')
         Route::inertia('/', 'Dashboard')->name('index');
         Route::resources([
             'category' => \App\Http\Controllers\CategoryController::class,
+            'blog' => \App\Http\Controllers\BlogController::class,
         ]);
     });
 

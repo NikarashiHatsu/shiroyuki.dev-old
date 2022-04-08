@@ -83,7 +83,7 @@ export default function Authenticated({ auth, header, children }) {
                                 </Link>
                             </li>
                             <li>
-                                <Link>
+                                <Link href={ route('dashboard.blog.index') }>
                                     <Note size={16} />
                                     <span>
                                         Blog
