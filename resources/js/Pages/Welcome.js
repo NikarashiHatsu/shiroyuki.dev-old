@@ -8,7 +8,7 @@ import DummyPostThumbnail3 from './../../images/post_dummies/rails.jpg';
 import DummyPostThumbnail4 from './../../images/post_dummies/android.jpg';
 import DummyPostThumbnail5 from './../../images/post_dummies/flutter.jpg';
 
-export default function Welcome(children) {
+export default function Welcome() {
     return (
         <Guest>
             <div className='grid grid-cols-12 grid-flow-row gap-4'>
