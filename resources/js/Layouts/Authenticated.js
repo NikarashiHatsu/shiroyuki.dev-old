@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Head, Link, usePage } from '@inertiajs/inertia-react';
 import Logo from './../../images/devsnote.svg';
 import { SignOut, House, Gauge, Gear, Note, Tag, ChatTeardropText, Users, List, Plus, ArrowLeft } from 'phosphor-react';

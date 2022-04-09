@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Blog;
+use App\Models\Category;
 use Inertia\Inertia;
 
 class BlogController extends Controller
@@ -16,8 +17,13 @@ class BlogController extends Controller
      */
     public function index()
     {
+        $blogs = Blog::query()
+            ->with('user')
+            ->withCount('comments')
+            ->get();
+
         return Inertia::render('Blog/Index', [
-            'blogs' => Blog::all(),
+            'blogs' => $blogs->append('thumbnail_url'),
         ]);
     }
 
@@ -28,7 +34,9 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Blog/Create', [
+            'categories' => Category::all(),
+        ]);
     }
 
     /**
@@ -39,7 +47,24 @@ class BlogController extends Controller
      */
     public function store(StoreBlogRequest $request)
     {
-        //
+        try {
+            $blog = Blog::create($request->validated());
+
+            if ($request->hasFile('thumbnail')) {
+                $blog->thumbnail = $request->file('thumbnail')->storePublicly('public/');
+                $blog->update();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->with([
+                'alertType' => 'error',
+                'alertMessage' => 'Terjadi kesalahan: ' . $th->getMessage(),
+            ]);
+        }
+
+        return redirect()->back()->with([
+            'alertType' => 'success',
+            'alertMessage' => 'Berhasil menambah blog.',
+        ]);
     }
 
     /**
@@ -61,7 +86,10 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        return Inertia::render('Blog/Edit', [
+            'blog' => $blog->append('thumbnail_url'),
+            'categories' => Category::all(),
+        ]);
     }
 
     /**
@@ -73,7 +101,28 @@ class BlogController extends Controller
      */
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
-        //
+        try {
+            $blog->update($request->only([
+                'title',
+                'content',
+                'category_id',
+            ]));
+
+            if ($request->hasFile('thumbnail')) {
+                $blog->thumbnail = $request->file('thumbnail')->storePublicly('public/');
+                $blog->update();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->with([
+                'alertType' => 'error',
+                'alertMessage' => 'Terjadi kesalahan: ' . $th->getMessage(),
+            ]);
+        }
+
+        return redirect()->back()->with([
+            'alertType' => 'success',
+            'alertMessage' => 'Berhasil memperbarui blog.',
+        ]);
     }
 
     /**
@@ -84,6 +133,18 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        try {
+            $blog->delete();
+        } catch (\Throwable $th) {
+            return redirect()->back()->with([
+                'alertType' => 'error',
+                'alertMessage' => 'Terjadi kesalahan: ' . $th->getMessage(),
+            ]);
+        }
+
+        return redirect()->back()->with([
+            'alertType' => 'success',
+            'alertMessage' => 'Berhasil menghapus blog.',
+        ]);
     }
 }

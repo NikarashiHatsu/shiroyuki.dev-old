@@ -25,9 +25,24 @@ class UpdateBlogRequest extends FormRequest
     {
         return [
             'category_id' => ['required', 'integer', 'exists:categories,id'],
-            'thumbnail' => ['required', 'image', 'max:2048'],
+            'thumbnail' => ['nullable'],
             'title' => ['required', 'string'],
             'description' => ['required'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'category_id.required' => 'Kategori tidak boleh kosong.',
+            'category_id.integer' => 'Kategori harus dipilih.',
+            'category_id.exists' => 'Kategori tidak ditemukan.',
+            'thumbnail.nullable' => 'Thumbnail tidak boleh kosong.',
+            'thumbnail.image' => 'Thumbnail harus berupa gambar.',
+            'thumbnail.max' => 'Ukuran maksimum thumbnail adalah 2048 KB.',
+            'title.required' => 'Judul tidak boleh kosong.',
+            'title.string' => 'Judul harus berupa string.',
+            'description.required' => 'Deskripsi tidak boleh kosong.',
         ];
     }
 }

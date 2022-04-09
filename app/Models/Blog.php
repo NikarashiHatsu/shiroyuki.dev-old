@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Blog extends Model
 {
@@ -16,13 +18,23 @@ class Blog extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function getThumbnailUrlAttribute()
+    {
+        return Storage::url($this->thumbnail);
+    }
+
     protected $guarded = [
         'id',
-        'user_id',
-        'slug',
     ];
 
     protected $fillable = [
+        'user_id',
+        'slug',
         'category_id',
         'title',
         'description',
