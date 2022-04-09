@@ -34,7 +34,10 @@ class IndexController extends Controller
         $data = collect([
             'blogs' => $blogs_data,
             'latestBlogs' => $blogs_data->take(5),
-            'categories' => Category::withCount('blogs')->get(),
+            'categories' => Category::query()
+                ->with('blogs')
+                ->withCount('blogs')
+                ->get(),
         ]);
 
         $this->data = $data;
@@ -52,5 +55,16 @@ class IndexController extends Controller
             ->append(['thumbnail_url', 'formatted_date']);
 
         return Inertia::render('Show', $this->data->put('blog', $blog->toArray())->toArray());
+    }
+
+    public function category(Category $category)
+    {
+        $blogs = $category
+            ->blogs()
+            ->with('user')
+            ->get()
+            ->append('thumbnail_url');
+
+        return Inertia::render('Category', $this->data->put('blogs', $blogs->toArray())->put('category', $category)->toArray());
     }
 }

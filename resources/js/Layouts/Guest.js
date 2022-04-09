@@ -36,7 +36,7 @@ function Categories(categories) {
             key={`Category Loop ${category.id}`}
         >
             <Link
-                href={route('category', category.name_slug)}
+                href={route('category', category.name)}
                 className='transition-colors duration-300 ease-in-out flex items-center justify-between text-sm hover:text-primary'
                 key={`Category Link ${category.id}`}
                 preserveScroll={true}
