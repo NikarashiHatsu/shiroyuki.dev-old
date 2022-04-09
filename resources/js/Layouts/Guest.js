@@ -2,7 +2,6 @@ import { Head, Link } from '@inertiajs/inertia-react';
 import Logo from './../../images/devsnote.svg';
 import React from 'react';
 import SmallPost from '@/Components/SmallPost';
-import Tag from '@/Components/Tag';
 
 function LatestBlogs(latestBlogs) {
     if (latestBlogs.length == 0) {
@@ -37,21 +36,15 @@ function Categories(categories) {
             key={`Category Loop ${category.id}`}
         >
             <Link
+                href={route('category', category.name_slug)}
                 className='transition-colors duration-300 ease-in-out flex items-center justify-between text-sm hover:text-primary'
                 key={`Category Link ${category.id}`}
+                preserveScroll={true}
             >
                 { category.name } ({ category.blogs_count })
             </Link>
         </li>
     );
-}
-
-function Tags(tags) {
-    if (tags.length == 0) {
-        return "Belum ada kategori yang dibuat.";
-    }
-
-    return tags.map(tag => <Tag tag={tag.name} key={`Tag Link ${tag.id}`} />);
 }
 
 export default function Guest({ children, latestBlogs, categories, tags }) {
@@ -119,15 +112,6 @@ export default function Guest({ children, latestBlogs, categories, tags }) {
                                     <span className='label-text uppercase font-semibold text-gray-500'>Blog Terakhir</span>
                                 </label>
                                 { LatestBlogs(latestBlogs) }
-                            </div>
-
-                            <div className='flex flex-col mt-6'>
-                                <label className='label'>
-                                    <span className='label-text uppercase font-semibold text-gray-500'>Tag</span>
-                                </label>
-                                <div className="flex flex-wrap">
-                                    { Tags(tags) }
-                                </div>
                             </div>
                         </div>
                     </div>
