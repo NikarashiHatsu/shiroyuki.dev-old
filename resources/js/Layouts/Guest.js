@@ -4,13 +4,56 @@ import React from 'react';
 import SmallPost from '@/Components/SmallPost';
 import Tag from '@/Components/Tag';
 
-import DummyPostThumbnail1 from './../../images/post_dummies/mac2022.jpg';
-import DummyPostThumbnail2 from './../../images/post_dummies/code.jpg';
-import DummyPostThumbnail3 from './../../images/post_dummies/rails.jpg';
-import DummyPostThumbnail4 from './../../images/post_dummies/android.jpg';
-import DummyPostThumbnail5 from './../../images/post_dummies/flutter.jpg';
+function LatestBlogs(latestBlogs) {
+    if (latestBlogs.length == 0) {
+        return "Belum ada blog yang ditulis.";
+    }
 
-export default function Guest({ children }) {
+    return latestBlogs.map(blog =>
+        <div
+            className='my-2'
+            key={`Latest Blog Loop ${blog.id}`}
+        >
+            <SmallPost
+                key={`Latest Blog ${blog.id}`}
+                author={blog.user.name}
+                title={blog.title}
+                formattedDate={blog.formattedDate}
+                thumbnail={blog.thumbnail_url}
+            />
+        </div>
+    );
+}
+
+function Categories(categories) {
+    if (categories.length == 0) {
+        return "Belum ada kategori yang dibuat.";
+    }
+
+    return categories.map(category =>
+        <li
+            className='mt-2'
+            key={`Category Loop ${category.id}`}
+        >
+            <Link
+                className='transition-colors duration-300 ease-in-out flex items-center justify-between text-sm hover:text-primary'
+                key={`Category Link ${category.id}`}
+            >
+                { category.name } ({ category.blogs_count })
+            </Link>
+        </li>
+    );
+}
+
+function Tags(tags) {
+    if (tags.length == 0) {
+        return "Belum ada kategori yang dibuat.";
+    }
+
+    return tags.map(tag => <Tag tag={tag.name} key={`Tag Link ${tag.id}`} />);
+}
+
+export default function Guest({ children, latestBlogs, categories, tags }) {
     return (
         <>
             <Head>
@@ -48,7 +91,7 @@ export default function Guest({ children }) {
                             <form>
                                 <div className='flex flex-col'>
                                     <label className='label'>
-                                        <span className='label-text'>Pencarian</span>
+                                        <span className='label-text uppercase font-semibold text-gray-500'>Pencarian</span>
                                     </label>
                                     <div className='input-group'>
                                         <input type="text" name='search' placeholder='Cari...' className='input input-bordered w-full' />
@@ -63,83 +106,26 @@ export default function Guest({ children }) {
 
                             <div className='flex flex-col mt-6'>
                                 <label className='label'>
-                                    <span className='label-text'>Kategori</span>
+                                    <span className='label-text uppercase font-semibold text-gray-500'>Kategori</span>
                                 </label>
                                 <ol className="list-inside">
-                                    <li className='mt-2'>
-                                        <Link>Teknologi</Link>
-                                    </li>
-                                    <li className='mt-2'>
-                                        <Link>Pengembangan</Link>
-                                    </li>
-                                    <li className='mt-2'>
-                                        <Link>Laravel</Link>
-                                    </li>
-                                    <li className='mt-2'>
-                                        <Link>Flutter</Link>
-                                    </li>
-                                    <li className='mt-2'>
-                                        <Link>Kuliah</Link>
-                                    </li>
+                                    { Categories(categories) }
                                 </ol>
                             </div>
 
                             <div className='flex flex-col mt-6'>
                                 <label className='label'>
-                                    <span className='label-text'>Post Terakhir</span>
+                                    <span className='label-text uppercase font-semibold text-gray-500'>Blog Terakhir</span>
                                 </label>
-                                <div>
-                                    <SmallPost
-                                        author="Hatsu Shiroyuki"
-                                        title="Mac 2022. Lebih tipis, lebih ringan, dan lebih kuat!"
-                                        formattedDate="8 April 2022"
-                                        thumbnail={DummyPostThumbnail1}
-                                    />
-                                </div>
-                                <div className='mt-4'>
-                                    <SmallPost
-                                        author="Hatsu Shiroyuki"
-                                        title="10 hal yang wajib diketahui programmer PHP di tahun 2022"
-                                        formattedDate="7 April 2022"
-                                        thumbnail={DummyPostThumbnail2}
-                                    />
-                                </div>
-                                <div className='mt-4'>
-                                    <SmallPost
-                                        author="Hatsu Shiroyuki"
-                                        title="Laravel, Ruby on Rails, atau Simfony? Berikut hal yang harus Anda ketahui sebelum memulai pengembangan menggunakan framework ini."
-                                        formattedDate="6 April 2022"
-                                        thumbnail={DummyPostThumbnail3}
-                                    />
-                                </div>
-                                <div className='mt-4'>
-                                    <SmallPost
-                                        author="Hatsu Shiroyuki"
-                                        title="Pengembangan Android, haruskah Anda memahami Java atau Kotlin sepenuhnya?"
-                                        formattedDate="5 April 2022"
-                                        thumbnail={DummyPostThumbnail4}
-                                    />
-                                </div>
-                                <div className='mt-4'>
-                                    <SmallPost
-                                        author="Hatsu Shiroyuki"
-                                        title="Flutter. Masa depan pengembangan multi-platform, atau kehancuran platform-specific development?"
-                                        formattedDate="4 April 2022"
-                                        thumbnail={DummyPostThumbnail5}
-                                    />
-                                </div>
+                                { LatestBlogs(latestBlogs) }
                             </div>
 
                             <div className='flex flex-col mt-6'>
                                 <label className='label'>
-                                    <span className='label-text'>Tag</span>
+                                    <span className='label-text uppercase font-semibold text-gray-500'>Tag</span>
                                 </label>
                                 <div className="flex flex-wrap">
-                                    <Tag tag="Teknologi" />
-                                    <Tag tag="Pengembangan" />
-                                    <Tag tag="Laravel" />
-                                    <Tag tag="Flutter" />
-                                    <Tag tag="Kuliah" />
+                                    { Tags(tags) }
                                 </div>
                             </div>
                         </div>

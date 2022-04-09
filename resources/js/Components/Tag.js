@@ -12,7 +12,7 @@ class Tag extends React.Component {
 
     render() {
         return (
-            <Link className="transition duration-300 ease-in-out inline-block border border-primary px-3 py-2 rounded-lg mr-2 mb-2 hover:bg-primary hover:text-white">
+            <Link className="transition duration-300 ease-in-out inline-block border border-primary px-2 py-1 text-sm rounded-lg mr-2 mb-2 hover:bg-primary hover:text-white">
                 {this.state.tag}
             </Link>
         )
