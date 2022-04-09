@@ -51,7 +51,7 @@ class BlogController extends Controller
             $blog = Blog::create($request->validated());
 
             if ($request->hasFile('thumbnail')) {
-                $blog->thumbnail = $request->file('thumbnail')->storePublicly('public/');
+                $blog->thumbnail = $request->file('thumbnail')->store('');
                 $blog->update();
             }
         } catch (\Throwable $th) {
@@ -109,7 +109,7 @@ class BlogController extends Controller
             ]));
 
             if ($request->hasFile('thumbnail')) {
-                $blog->thumbnail = $request->file('thumbnail')->storePublicly('public/');
+                $blog->thumbnail = $request->file('thumbnail')->store('');
                 $blog->update();
             }
         } catch (\Throwable $th) {
