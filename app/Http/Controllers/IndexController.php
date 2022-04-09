@@ -63,8 +63,43 @@ class IndexController extends Controller
             ->blogs()
             ->with('user')
             ->get()
-            ->append('thumbnail_url');
+            ->append(['thumbnail_url', 'formatted_date'])
+            ->map(function($blog) {
+                return [
+                    'id' => $blog->id,
+                    'slug' => $blog->slug,
+                    'user' => $blog->user,
+                    'title' => $blog->title,
+                    'category' => $blog->category->name,
+                    'formattedDate' => $blog->formatted_date,
+                    'thumbnail_url' => $blog->thumbnail_url,
+                    'description' => $blog->description,
+                ];
+            });
 
         return Inertia::render('Category', $this->data->put('blogs', $blogs->toArray())->put('category', $category)->toArray());
+    }
+
+    public function search(string $searchQuery)
+    {
+        $blogs = Blog::query()
+            ->where('title', 'like', "%$searchQuery%")
+            ->with(['user', 'category'])
+            ->get()
+            ->append(['thumbnail_url', 'formatted_date'])
+            ->map(function($blog) {
+                return [
+                    'id' => $blog->id,
+                    'slug' => $blog->slug,
+                    'user' => $blog->user,
+                    'title' => $blog->title,
+                    'category' => $blog->category->name,
+                    'formattedDate' => $blog->formatted_date,
+                    'thumbnail_url' => $blog->thumbnail_url,
+                    'description' => $blog->description,
+                ];
+            });
+
+        return Inertia::render('Search', $this->data->put('blogs', $blogs->toArray())->put('searchQuery', $searchQuery)->toArray());
     }
 }

@@ -1,4 +1,4 @@
-import { Head, Link } from '@inertiajs/inertia-react';
+import { Head, Link, useForm } from '@inertiajs/inertia-react';
 import Logo from './../../images/devsnote.svg';
 import React from 'react';
 import SmallPost from '@/Components/SmallPost';
@@ -47,7 +47,19 @@ function Categories(categories) {
     );
 }
 
-export default function Guest({ children, latestBlogs, categories, tags }) {
+export default function Guest({ children, latestBlogs, categories, searchQuery }) {
+    const { data, get, setData } = useForm({
+        'query': searchQuery,
+    });
+
+    function handleSearch(e) {
+        e.preventDefault();
+
+        get(route('search', data.query), {
+            preserveScroll: true
+        });
+    }
+
     return (
         <>
             <Head>
@@ -82,13 +94,20 @@ export default function Guest({ children, latestBlogs, categories, tags }) {
                         </div>
 
                         <div className='col-span-12 lg:col-span-3'>
-                            <form>
+                            <form onSubmit={handleSearch}>
                                 <div className='flex flex-col'>
                                     <label className='label'>
                                         <span className='label-text uppercase font-semibold text-gray-500'>Pencarian</span>
                                     </label>
                                     <div className='input-group'>
-                                        <input type="text" name='search' placeholder='Cari...' className='input input-bordered w-full' />
+                                        <input
+                                            type="text"
+                                            name='search'
+                                            placeholder='Cari...'
+                                            className='input input-bordered w-full'
+                                            value={data.query}
+                                            onChange={e => setData('query', e.target.value)}
+                                        />
                                         <button className='btn btn-square btn-primary'>
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

@@ -18,6 +18,7 @@ use Inertia\Inertia;
 Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('index');
 Route::get('/{blog:slug}', [\App\Http\Controllers\IndexController::class, 'show'])->name('show');
 Route::get('/category/{category:name}', [\App\Http\Controllers\IndexController::class, 'category'])->name('category');
+Route::get('/search/{searchQuery}', [\App\Http\Controllers\IndexController::class, 'search'])->name('search');
 
 Route::prefix('dashboard')
     ->as('dashboard.')
