@@ -98,7 +98,7 @@ class UserController extends Controller
 
         return redirect()->back()->with([
             'alertType' => 'success',
-            'alertMessage' => 'Berhasil mengubah pengguna.',
+            'alertMessage' => 'Berhasil memperbarui pengguna.',
         ]);
     }
 
