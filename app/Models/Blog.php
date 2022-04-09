@@ -33,6 +33,11 @@ class Blog extends Model
         return Storage::url($this->thumbnail);
     }
 
+    public function getFormattedDateAttribute()
+    {
+        return $this->created_at->isoFormat('LL');
+    }
+
     protected $guarded = [
         'id',
     ];
