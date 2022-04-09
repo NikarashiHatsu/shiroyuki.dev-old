@@ -104,7 +104,7 @@ class BlogController extends Controller
         try {
             $blog->update($request->only([
                 'title',
-                'content',
+                'description',
                 'category_id',
             ]));
 
