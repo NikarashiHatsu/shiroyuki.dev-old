@@ -14,6 +14,7 @@ function Blogs(blogs) {
         >
             <Post
                 key={`Blog Post ${blog.id}`}
+                slug={blog.slug}
                 author={blog.user.name}
                 title={blog.title}
                 category={blog.category}

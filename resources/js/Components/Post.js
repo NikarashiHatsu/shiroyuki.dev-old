@@ -2,9 +2,13 @@ import { Link } from "@inertiajs/inertia-react";
 import React from "react";
 import { Tag } from 'phosphor-react';
 
-export default function Post({ author, thumbnail, title, description, category, formattedDate }) {
+export default function Post({ author, slug, thumbnail, title, description, category, formattedDate }) {
     return(
-        <Link className="flex flex-col group border rounded">
+        <Link
+            href={route('show', slug)}
+            className="flex flex-col group border rounded"
+            preserveScroll={true}
+        >
             <div className="relative">
                 <div className="aspect-w-16 aspect-h-10">
                     <img src={thumbnail} className='w-full h-full rounded-t' />

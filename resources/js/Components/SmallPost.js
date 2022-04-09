@@ -1,30 +1,19 @@
 import { Link } from "@inertiajs/inertia-react";
 import React from "react";
 
-class SmallPost extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            author: this.props.author ?? 'Hatsu Shiroyuki',
-            thumbnail: this.props.thumbnail ?? 'https://source.unsplash.com/100x100/',
-            title: this.props.title ??  'Lorem ipsum dolor sit amet adipiscing',
-            formattedDate: this.props.formattedDate ?? '5 April 2022'
-        }
-    }
-
-    render() {
-        return (
-            <Link className="flex group">
-                <img src={this.state.thumbnail} className='w-24 h-24 rounded object-cover' />
-                <div className="flex flex-col ml-2">
-                    <h6 className="transition-colors duration-300 ease-in-out font-semibold line-clamp-2 group-hover:text-primary">{this.state.title}</h6>
-                    <p className="text-sm my-1 text-gray-500">{this.state.author}</p>
-                    <p className="text-sm text-gray-500">{this.state.formattedDate}</p>
-                </div>
-            </Link>
-        );
-    }
+export default function SmallPost({ slug, thumbnail, title, author, formattedDate }) {
+    return(
+        <Link
+            href={route('show', slug)}
+            className="flex group"
+            preserveScroll={true}
+        >
+            <img src={thumbnail} className='w-24 h-24 rounded object-cover' />
+            <div className="flex flex-col ml-2">
+                <h6 className="transition-colors duration-300 ease-in-out font-semibold line-clamp-2 group-hover:text-primary">{title}</h6>
+                <p className="text-sm my-1 text-gray-500">{author}</p>
+                <p className="text-sm text-gray-500">{formattedDate}</p>
+            </div>
+        </Link>
+    );
 }
-
-export default SmallPost;

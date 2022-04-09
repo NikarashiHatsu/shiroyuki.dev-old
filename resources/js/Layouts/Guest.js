@@ -16,6 +16,7 @@ function LatestBlogs(latestBlogs) {
         >
             <SmallPost
                 key={`Latest Blog ${blog.id}`}
+                slug={blog.slug}
                 author={blog.user.name}
                 title={blog.title}
                 formattedDate={blog.formattedDate}
