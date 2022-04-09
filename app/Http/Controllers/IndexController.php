@@ -13,6 +13,7 @@ class IndexController extends Controller
     public function __construct()
     {
         $blogs = Blog::query()
+            ->orderBy('created_at', 'desc')
             ->with(['user', 'category'])
             ->get();
 
@@ -61,6 +62,7 @@ class IndexController extends Controller
     {
         $blogs = $category
             ->blogs()
+            ->orderBy('created_at', 'desc')
             ->with('user')
             ->get()
             ->append(['thumbnail_url', 'formatted_date'])
@@ -83,6 +85,7 @@ class IndexController extends Controller
     public function search(string $searchQuery)
     {
         $blogs = Blog::query()
+            ->orderBy('created_at', 'desc')
             ->where('title', 'like', "%$searchQuery%")
             ->with(['user', 'category'])
             ->get()

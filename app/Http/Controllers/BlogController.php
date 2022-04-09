@@ -18,6 +18,7 @@ class BlogController extends Controller
     public function index()
     {
         $blogs = Blog::query()
+            ->orderBy('created_at', 'desc')
             ->with('user')
             ->withCount('comments')
             ->get();
