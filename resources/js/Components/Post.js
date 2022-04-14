@@ -11,7 +11,11 @@ export default function Post({ author, slug, thumbnail, title, description, cate
         >
             <div className="relative">
                 <div className="aspect-w-16 aspect-h-10">
-                    <img src={thumbnail} className='w-full h-full rounded-t' />
+                    <img
+                        src={thumbnail}
+                        alt={`Thumbnail dari ${title}`}
+                        className='w-full h-full rounded-t'
+                    />
                 </div>
                 <div className="absolute bottom-0 left-0 p-2">
                     <div className="bg-white/75 text-sm p-1 rounded flex items-center backdrop-blur">
