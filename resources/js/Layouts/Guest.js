@@ -67,7 +67,7 @@ export default function Guest({ children, latestBlogs, categories, searchQuery }
                 <link rel="shortcut icon" href={Logo} type="image/x-icon" />
             </Head>
 
-            <div className='w-full font-sans' data-theme="light">
+            <div className='w-full font-sans px-6 2xl:px-0' data-theme="light">
                 <div className='border-b'>
                     <div className='max-w-7xl mx-auto'>
                         <div className='flex py-4'>
