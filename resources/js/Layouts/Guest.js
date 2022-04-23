@@ -20,6 +20,7 @@ function LatestBlogs(latestBlogs) {
                 title={blog.title}
                 formattedDate={blog.formattedDate}
                 thumbnail={blog.thumbnail_url}
+                viewsCount={blog.views_count}
             />
         </div>
     );

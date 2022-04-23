@@ -23,6 +23,7 @@ function Blogs(blogs) {
                 formattedDate={blog.formattedDate}
                 thumbnail={blog.thumbnail_url}
                 description={blog.description}
+                viewsCount={blog.views_count}
             />
         </div>
     );

@@ -28,6 +28,11 @@ class Blog extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function views(): HasMany
+    {
+        return $this->hasMany(View::class);
+    }
+
     public function getThumbnailUrlAttribute()
     {
         return Storage::url($this->thumbnail);

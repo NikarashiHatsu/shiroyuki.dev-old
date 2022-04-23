@@ -1,7 +1,7 @@
 import React from "react";
 import Guest from '@/Layouts/Guest';
 import ReactMarkdown from 'react-markdown';
-import { ArrowLeft } from'phosphor-react';
+import { ArrowLeft, Eye, Chat } from'phosphor-react';
 import { Head, Link } from "@inertiajs/inertia-react";
 
 export default function Detail({ blog, latestBlogs, categories }) {
@@ -51,6 +51,19 @@ export default function Detail({ blog, latestBlogs, categories }) {
                     />
                 </div>
                 <h1 className="mb-4">{blog.title}</h1>
+                <div className="flex items-center mt-2">
+                    <div className="flex items-center">
+                        <Eye size={16} />
+                        <span className="ml-2">
+                            {blog.views_count}
+                        </span>
+                    </div>
+                    <div className="w-1 h-1 bg-gray-500 rounded-full mx-4"></div>
+                    <div className="flex items-center">
+                        <Chat size={16} />
+                        <span className="ml-2">0</span>
+                    </div>
+                </div>
                 <div className="flex items-center">
                     <span>{blog.user.name}</span>
                     <div className="w-1 h-1 mx-2 rounded-full bg-gray-500"></div>
