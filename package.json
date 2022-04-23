@@ -6,7 +6,7 @@
         "watch": "mix watch",
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
-        "prod": "npm run production",
+        "prod": "mix --production && mix --production --mix-config=webpack.ssr.mix.js",
         "production": "mix --production"
     },
     "devDependencies": {
@@ -36,6 +36,8 @@
         "ziggy": "^2.4.0"
     },
     "dependencies": {
-        "firebase": "^9.6.10"
+        "@inertiajs/server": "^0.1.0",
+        "firebase": "^9.6.10",
+        "webpack-node-externals": "^3.0.0"
     }
 }
