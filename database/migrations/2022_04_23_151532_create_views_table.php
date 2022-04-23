@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('views', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->nullable();
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->foreignId('blog_id')->constrained();
             $table->timestamps();
         });
