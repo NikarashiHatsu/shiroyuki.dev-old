@@ -1,5 +1,12 @@
 <x-guest-layout>
     <x-slot:header>
+        <title>HaArtikel dengan kategori {{ $category->name }} di shiroyuki.dev</title>
+        <meta name="author" content="Aghits Nidallah" />
+        <meta name="title" content='Shiroyuki.dev, sebuah blog dan catatan pengembangan.' />
+        <meta name="description" content="Shiroyuki.dev adalah blog yang memuat pengembangan web terbaru. Biasanya mengisi konten tentang Laravel, Flutter, dan hal lainnya." />
+        <meta name="keywords" content="shiroyuki, dev, shiroyuki.dev, hatsu, hatsu shiroyuki, hatsushiroyuki, blog, pengembangan, web, laravel, flutter, android, ios, react, vue, php, python, ruby, java, javascript, css, html, c, c++, c#, swift, kotlin, android, ios, react, vue, php, python, ruby, java, javascript, css, html, c, c++, c#, swift, kotlin" />
+        <meta name="robots" content="index,follow" />
+
         <meta property="og:title" content="Artikel dengan kategori {{ $category->name }} di shiroyuki.dev" />
         <meta property="og:type" content="article" />
         <meta property="og:image" itemProp="image" content={{ asset('images/devsnote-default-banner.png') }} />
