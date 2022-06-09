@@ -1,6 +1,6 @@
 <x-guest-layout>
     <x-slot:header>
-        <title>HaArtikel dengan kategori {{ $category->name }} di shiroyuki.dev</title>
+        <title>Artikel dengan kategori {{ $category->name }} di shiroyuki.dev</title>
         <meta name="author" content="Aghits Nidallah" />
         <meta name="title" content='Shiroyuki.dev, sebuah blog dan catatan pengembangan.' />
         <meta name="description" content="Shiroyuki.dev adalah blog yang memuat pengembangan web terbaru. Biasanya mengisi konten tentang Laravel, Flutter, dan hal lainnya." />
