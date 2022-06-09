@@ -6,7 +6,7 @@
         "watch": "mix watch",
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
-        "prod": "mix --production && mix --production",
+        "prod": "mix --production",
         "production": "mix --production"
     },
     "devDependencies": {
