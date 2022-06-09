@@ -1,8 +1,14 @@
 <x-guest-layout>
     <x-slot:header>
+        <meta name="author" content="Aghits Nidallah" />
+        <meta name="title" content='Shiroyuki.dev, sebuah blog dan catatan pengembangan.' />
+        <meta name="description" content="{{ $blog->description_trimmed }}" />
+        <meta name="keywords" content="shiroyuki, dev, shiroyuki.dev, hatsu, hatsu shiroyuki, hatsushiroyuki, blog, pengembangan, web, laravel, flutter, android, ios, react, vue, php, python, ruby, java, javascript, css, html, c, c++, c#, swift, kotlin, android, ios, react, vue, php, python, ruby, java, javascript, css, html, c, c++, c#, swift, kotlin" />
+        <meta name="robots" content="index,follow" />
+
         <meta property="og:title" content="{{ $blog->title }}" />
         <meta property="og:type" content="article" />
-        <meta property="og:image" itemProp="image" content={blog.thumbnail_url} />
+        <meta property="og:image" itemProp="image" content="{{ $blog->thumbnail_url }}" />
         <meta property="og:image:alt" content="{{ $blog->title }}" />
         <meta property="og:url" content="{{ route('show', $blog->slug) }}" />
         <meta property="og:description" content="{{ $blog->description_trimmed }}" />
