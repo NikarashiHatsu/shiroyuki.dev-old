@@ -1,5 +1,6 @@
 <x-guest-layout>
     <x-slot:header>
+        <title>{{ $blog->title }}</title>
         <meta name="author" content="Aghits Nidallah" />
         <meta name="title" content='Shiroyuki.dev, sebuah blog dan catatan pengembangan.' />
         <meta name="description" content="{{ $blog->description_trimmed }}" />

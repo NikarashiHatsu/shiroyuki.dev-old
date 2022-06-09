@@ -8,6 +8,7 @@
         @isset ($header)
             {{ $header }}
         @else
+            <title>{{ config('app.name', 'Laravel') }}</title>
             <meta name="author" content="Aghits Nidallah" />
             <meta name="title" content='Shiroyuki.dev, sebuah blog dan catatan pengembangan.' />
             <meta name="description" content="Shiroyuki.dev adalah blog yang memuat pengembangan web terbaru. Biasanya mengisi konten tentang Laravel, Flutter, dan hal lainnya." />
@@ -28,8 +29,6 @@
             <meta name="twitter:title" content="Shiroyuki.dev" />
             <meta name="twitter:description" content="Shiroyuki.dev adalah blog yang memuat pengembangan web terbaru. Biasanya mengisi konten tentang Laravel, Flutter, dan hal lainnya." />
         @endif
-
-        <title>{{ config('app.name', 'Laravel') }}</title>
 
         <link rel="shortcut icon" href="{{ asset('images/devsnote.svg') }}" type="image/x-icon">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
