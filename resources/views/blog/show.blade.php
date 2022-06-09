@@ -58,8 +58,9 @@
                 col-span-10
                 prose-sm md:prose prose-slate
                 md:prose-h1:leading-snug
-                prose-img:rounded-lg
+                prose-img:rounded-lg prose-ul:list-disc prose-ol:list-decimal
                 prose-pre:!bg-gray-900 prose-code:!bg-transparent
+                sm:prose-pre:!bg-gray-900 sm:prose-code:!bg-transparent
                 relative"
         >
             <a class="btn btn-ghost mb-4" href={{ route('index') }}>
