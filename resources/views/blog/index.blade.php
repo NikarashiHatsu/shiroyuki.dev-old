@@ -46,7 +46,7 @@
                                 {{ $blog->formatted_date }}
                             </span>
                         </div>
-                        <p class="text-sm my-1 line-clamp-3 leading-normal whitespace-pre-line">{{ $blog->trimmed_description }}</p>
+                        <p class="text-sm my-1 line-clamp-3 leading-normal whitespace-pre-line">{{ $blog->description_trimmed }}</p>
                     </div>
                 </a>
             </div>
