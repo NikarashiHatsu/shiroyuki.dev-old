@@ -22,9 +22,9 @@
         <meta name="twitter:description" content="{{ $blog->description_trimmed }}" />
     </x-slot>
 
-    <div class="grid grid-cols-12 grid-flow-row gap-6">
-        <div class="col-span-1">
-            <div class="sticky top-0 left-0 pt-8 md:pt-16 flex flex-col items-center">
+    <div class="grid grid-cols-12 grid-flow-row sm:gap-4 md:gap-6">
+        <div class="col-span-2">
+            <div class="sticky top-0 left-0 pt-8 sm:pt-16 flex flex-col items-start sm:items-center">
                 <div class="flex flex-col items-center">
                     <span class="tooltip" data-tip="Pembaca">
                         <button class="p-2 rounded-full cursor-default">
@@ -55,7 +55,8 @@
 
         <div
             class="
-                col-span-11
+                col-span-10
+                prose-sm md:prose
                 prose prose-slate
                 prose-h1:leading-snug
                 prose-img:rounded-lg
