@@ -15,7 +15,7 @@ class IndexController extends Controller
         $blogs = Blog::query()
             ->orderBy('created_at', 'desc')
             ->with(['user', 'category'])
-            ->withCount('views')
+            ->withCount(['views', 'likes'])
             ->get();
 
         return view('blog.index', [
@@ -51,7 +51,7 @@ class IndexController extends Controller
             'blogs' => $category
                 ->blogs()
                 ->orderBy('created_at', 'desc')
-                ->withCount('views')
+                ->withCount(['views', 'likes'])
                 ->with('user')
                 ->get(),
         ]);
@@ -70,7 +70,7 @@ class IndexController extends Controller
             'blogs' => Blog::query()
                 ->orderBy('created_at', 'desc')
                 ->where('title', 'like', "%$search_query%")
-                ->withCount('views')
+                ->withCount(['views', 'likes'])
                 ->with(['user', 'category'])
                 ->get(),
         ]);

@@ -122,6 +122,13 @@
                                                     </div>
                                                     <div class="w-1 h-1 bg-gray-500 rounded-full mx-2"></div>
                                                     <div class="flex">
+                                                        <x-phosphor-heart width="14" height="14" />
+                                                        <span class="text-xs ml-1">
+                                                            {{ $blog->likes_count }}
+                                                        </span>
+                                                    </div>
+                                                    <div class="w-1 h-1 bg-gray-500 rounded-full mx-2"></div>
+                                                    <div class="flex">
                                                         <x-phosphor-chat width="14" height="14" />
                                                         <span class="text-xs ml-1">0</span>
                                                     </div>

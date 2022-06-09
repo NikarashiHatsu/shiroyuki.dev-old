@@ -16,7 +16,11 @@ class GuestLayout extends Component
     public function render()
     {
         return view('layouts.guest', [
-            'latest_blogs' => Blog::get()->take(5),
+            'latest_blogs' => Blog::query()
+                ->withCount(['views', 'likes'])
+                ->orderByDesc('created_at')
+                ->get()
+                ->take(5),
             'categories' => Category::query()
                 ->with('blogs')
                 ->withCount('blogs')
