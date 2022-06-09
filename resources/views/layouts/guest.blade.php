@@ -5,27 +5,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <meta name="author" content="Aghits Nidallah" />
-        <meta name="title" content='Shiroyuki.dev, sebuah blog dan catatan pengembangan.' />
-        <meta name="description" content="Shiroyuki.dev adalah blog yang memuat pengembangan web terbaru. Biasanya mengisi konten tentang Laravel, Flutter, dan hal lainnya." />
-        <meta name="keywords" content="shiroyuki, dev, shiroyuki.dev, hatsu, hatsu shiroyuki, hatsushiroyuki, blog, pengembangan, web, laravel, flutter, android, ios, react, vue, php, python, ruby, java, javascript, css, html, c, c++, c#, swift, kotlin, android, ios, react, vue, php, python, ruby, java, javascript, css, html, c, c++, c#, swift, kotlin" />
-        <meta name="robots" content="index,follow" />
+        @isset ($header)
+            {{ $header }}
+        @else
+            <meta name="author" content="Aghits Nidallah" />
+            <meta name="title" content='Shiroyuki.dev, sebuah blog dan catatan pengembangan.' />
+            <meta name="description" content="Shiroyuki.dev adalah blog yang memuat pengembangan web terbaru. Biasanya mengisi konten tentang Laravel, Flutter, dan hal lainnya." />
+            <meta name="keywords" content="shiroyuki, dev, shiroyuki.dev, hatsu, hatsu shiroyuki, hatsushiroyuki, blog, pengembangan, web, laravel, flutter, android, ios, react, vue, php, python, ruby, java, javascript, css, html, c, c++, c#, swift, kotlin, android, ios, react, vue, php, python, ruby, java, javascript, css, html, c, c++, c#, swift, kotlin" />
+            <meta name="robots" content="index,follow" />
 
-        <meta property="og:title" content="Shiroyuki.dev" />
-        <meta property="og:type" content="article" />
-        <meta property="og:image" itemProp="image" content={{ asset('images/devsnote-default-banner.png') }} />
-        <meta property="og:image:alt" content="Shiroyuki.dev adalah blog yang memuat pengembangan web terbaru. Biasanya mengisi konten tentang Laravel, Flutter, dan hal lainnya." />
-        <meta property="og:url" content={{ route('index') }} />
-        <meta property="og:description" content="Shiroyuki.dev adalah blog yang memuat pengembangan web terbaru. Biasanya mengisi konten tentang Laravel, Flutter, dan hal lainnya." />
-        <meta property="og:site_name" content="Shiroyuki.dev" />
+            <meta property="og:title" content="Shiroyuki.dev" />
+            <meta property="og:type" content="article" />
+            <meta property="og:image" itemProp="image" content={{ asset('images/devsnote-default-banner.png') }} />
+            <meta property="og:image:alt" content="Shiroyuki.dev adalah blog yang memuat pengembangan web terbaru. Biasanya mengisi konten tentang Laravel, Flutter, dan hal lainnya." />
+            <meta property="og:url" content={{ route('index') }} />
+            <meta property="og:description" content="Shiroyuki.dev adalah blog yang memuat pengembangan web terbaru. Biasanya mengisi konten tentang Laravel, Flutter, dan hal lainnya." />
+            <meta property="og:site_name" content="Shiroyuki.dev" />
 
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site:id" content="irlnidallah" />
-        <meta name="twitter:creator:id" content="irlnidallah" />
-        <meta name="twitter:title" content="Shiroyuki.dev" />
-        <meta name="twitter:description" content="Shiroyuki.dev adalah blog yang memuat pengembangan web terbaru. Biasanya mengisi konten tentang Laravel, Flutter, dan hal lainnya." />
-
-        {{ $header ?? "" }}
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:site:id" content="irlnidallah" />
+            <meta name="twitter:creator:id" content="irlnidallah" />
+            <meta name="twitter:title" content="Shiroyuki.dev" />
+            <meta name="twitter:description" content="Shiroyuki.dev adalah blog yang memuat pengembangan web terbaru. Biasanya mengisi konten tentang Laravel, Flutter, dan hal lainnya." />
+        @endif
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
