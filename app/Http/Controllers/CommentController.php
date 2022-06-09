@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
 use App\Models\Comment;
-use Inertia\Inertia;
 
 class CommentController extends Controller
 {
@@ -16,7 +15,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Comment/Index', [
+        return view('dashboard.comment.index', [
             'comments' => Comment::all(),
         ]);
     }

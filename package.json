@@ -6,38 +6,31 @@
         "watch": "mix watch",
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
-        "prod": "mix --production && mix --production --mix-config=webpack.ssr.mix.js",
+        "prod": "mix --production && mix --production",
         "production": "mix --production"
     },
     "devDependencies": {
-        "@babel/preset-react": "^7.16.7",
-        "@headlessui/react": "^1.4.2",
-        "@inertiajs/inertia": "^0.11.0",
-        "@inertiajs/inertia-react": "^0.8.0",
+        "@babel/preset-react": "^7.17.12",
         "@inertiajs/progress": "^0.2.7",
         "@tailwindcss/aspect-ratio": "^0.4.0",
         "@tailwindcss/forms": "^0.4.0",
         "@tailwindcss/line-clamp": "^0.3.1",
         "@tailwindcss/typography": "^0.5.2",
-        "@toast-ui/editor": "^3.1.3",
-        "@toast-ui/react-editor": "^3.1.3",
+        "@toast-ui/editor": "^3.1.7",
+        "alpinejs": "^3.4.2",
         "autoprefixer": "^10.4.2",
         "axios": "^0.25",
         "daisyui": "^2.13.6",
+        "firebase": "^9.6.10",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "phosphor-react": "^1.4.1",
         "postcss": "^8.4.6",
         "postcss-import": "^14.0.2",
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2",
-        "react-markdown": "^8.0.2",
         "tailwindcss": "^3.0.18",
-        "ziggy": "^2.4.0"
+        "webpack-node-externals": "^3.0.0"
     },
     "dependencies": {
-        "@inertiajs/server": "^0.1.0",
-        "firebase": "^9.6.10",
-        "webpack-node-externals": "^3.0.0"
+        "highlight.js": "^11.5.1",
+        "highlightjs-blade": "github:miken32/highlightjs-blade"
     }
 }

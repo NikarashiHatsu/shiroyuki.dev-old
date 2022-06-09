@@ -6,7 +6,6 @@ use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Blog;
 use App\Models\Category;
-use Inertia\Inertia;
 
 class BlogController extends Controller
 {
@@ -17,14 +16,12 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::query()
-            ->orderBy('created_at', 'desc')
-            ->with('user')
-            ->withCount('comments')
-            ->get();
-
-        return Inertia::render('Blog/Index', [
-            'blogs' => $blogs->append('thumbnail_url'),
+        return view('dashboard.blog.index', [
+            'blogs' => Blog::query()
+                ->orderBy('created_at', 'desc')
+                ->with('user')
+                ->withCount(['views', 'comments'])
+                ->get(),
         ]);
     }
 
@@ -35,7 +32,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Blog/Create', [
+        return view('dashboard.blog.create', [
             'categories' => Category::all(),
         ]);
     }
@@ -56,16 +53,10 @@ class BlogController extends Controller
                 $blog->update();
             }
         } catch (\Throwable $th) {
-            return redirect()->back()->with([
-                'alertType' => 'error',
-                'alertMessage' => 'Terjadi kesalahan: ' . $th->getMessage(),
-            ]);
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $th->getMessage());
         }
 
-        return redirect()->back()->with([
-            'alertType' => 'success',
-            'alertMessage' => 'Berhasil menambah blog.',
-        ]);
+        return redirect()->back()->with('success', 'Berhasil menambah blog.');
     }
 
     /**
@@ -87,8 +78,8 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        return Inertia::render('Blog/Edit', [
-            'blog' => $blog->append('thumbnail_url'),
+        return view('dashboard.blog.edit', [
+            'blog' => $blog,
             'categories' => Category::all(),
         ]);
     }
@@ -114,16 +105,10 @@ class BlogController extends Controller
                 $blog->update();
             }
         } catch (\Throwable $th) {
-            return redirect()->back()->with([
-                'alertType' => 'error',
-                'alertMessage' => 'Terjadi kesalahan: ' . $th->getMessage(),
-            ]);
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $th->getMessage());
         }
 
-        return redirect()->back()->with([
-            'alertType' => 'success',
-            'alertMessage' => 'Berhasil memperbarui blog.',
-        ]);
+        return redirect()->back()->with('success', 'Berhasil memperbarui blog.');
     }
 
     /**
@@ -137,15 +122,9 @@ class BlogController extends Controller
         try {
             $blog->delete();
         } catch (\Throwable $th) {
-            return redirect()->back()->with([
-                'alertType' => 'error',
-                'alertMessage' => 'Terjadi kesalahan: ' . $th->getMessage(),
-            ]);
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $th->getMessage());
         }
 
-        return redirect()->back()->with([
-            'alertType' => 'success',
-            'alertMessage' => 'Berhasil menghapus blog.',
-        ]);
+        return redirect()->back()->with('success', 'Berhasil menghapus blog.');
     }
 }

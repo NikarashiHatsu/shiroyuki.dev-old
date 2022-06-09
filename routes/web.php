@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +16,14 @@ use Inertia\Inertia;
 Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('index');
 Route::get('/blog/{blog:slug}', [\App\Http\Controllers\IndexController::class, 'show'])->name('show');
 Route::get('/category/{category:name}', [\App\Http\Controllers\IndexController::class, 'category'])->name('category');
-Route::get('/search/{searchQuery}', [\App\Http\Controllers\IndexController::class, 'search'])->name('search');
+Route::get('/search', [\App\Http\Controllers\IndexController::class, 'search'])->name('search');
 
 Route::prefix('dashboard')
     ->as('dashboard.')
     ->middleware(['auth', 'verified'])
     ->group(function() {
-        Route::inertia('/', 'Dashboard')->name('index');
-        Route::inertia('/setting', 'Setting')->name('setting.index');
+        Route::view('/', 'dashboard.index')->name('index');
+        Route::view('/settings', 'dashboard.settings.index')->name('settings.index');
         Route::resources([
             'category' => \App\Http\Controllers\CategoryController::class,
             'comment' => \App\Http\Controllers\CommentController::class,

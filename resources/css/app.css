@@ -1,3 +1,9 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@layer components {
+    .prose p code, .prose ul li code {
+        @apply !bg-red-100 text-red-700;
+    }
+}

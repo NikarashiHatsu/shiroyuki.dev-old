@@ -33,6 +33,11 @@ class Blog extends Model
         return $this->hasMany(View::class);
     }
 
+    public function getDescriptionTrimmedAttribute(): string
+    {
+        return mb_strimwidth($this->description, 0, 100, '...');
+    }
+
     public function getThumbnailUrlAttribute()
     {
         return Storage::url($this->thumbnail);

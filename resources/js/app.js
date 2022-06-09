@@ -1,13 +1,14 @@
 require('./bootstrap');
 
-import React from 'react';
-import { render } from 'react-dom';
-import { createInertiaApp } from '@inertiajs/inertia-react';
-import { InertiaProgress } from '@inertiajs/progress';
+// ALPINE.JS
+import Alpine from 'alpinejs';
+window.Alpine = Alpine;
+Alpine.start();
+
+// FIREBASE
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from "firebase/analytics";
 
-const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 const firebaseConfig = {
     apiKey: "AIzaSyADnNR4R3w3SJUr_FmnV01caif2fizhqxs",
     authDomain: "shiroyuki-dev.firebaseapp.com",
@@ -20,17 +21,22 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-createInertiaApp({
-    title: (title) => `${title} - ${appName}`,
-    resolve: (name) => require(`./Pages/${name}`),
-    setup({ el, App, props }) {
-        return render(<App {...props} />, el);
-    },
-});
+// HIGHLIGHT.JS
+import hljs from 'highlight.js'
+import hljsBlade from 'highlightjs-blade'
+import 'highlight.js/styles/atom-one-dark.css'
 
-InertiaProgress.init({
-    delay: 250,
-    color: '#ef4444',
-    includeCSS: true,
-    showSpinner: false,
-});
+hljs.registerLanguage('blade', hljsBlade)
+document.querySelectorAll('pre code').forEach((block) => hljs.highlightElement(block))
+
+// TUI Editor
+import '@toast-ui/editor/dist/toastui-editor.css'
+import Editor from '@toast-ui/editor'
+window.editor = new Editor({
+    initialValue: document.querySelector('#description').value,
+    el: document.querySelector('#editor'),
+    previewStyle: "vertical",
+    height: "600px",
+    initialEditType: "markdown",
+    useCommandShortcut: true,
+})

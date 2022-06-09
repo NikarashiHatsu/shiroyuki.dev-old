@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
-use Inertia\Inertia;
 
 class CategoryController extends Controller
 {
@@ -16,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Category/Index', [
+        return view('dashboard.category.index', [
             'categories' => Category::withCount('blogs')->get(),
         ]);
     }
@@ -28,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Category/Create');
+        return view('dashboard.category.create');
     }
 
     /**
@@ -39,21 +38,13 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        $data = $request->validated();
-
         try {
-            Category::create($data);
+            Category::create($request->validated());
         } catch (\Throwable $th) {
-            return redirect()->back()->with([
-                'alertType' => 'error',
-                'alertMessage' => 'Terjadi kesalahan: ' . $th->getMessage(),
-            ]);
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $th->getMessage());
         }
 
-        return redirect()->back()->with([
-            'alertType' => 'success',
-            'alertMessage' => 'Berhasil menambah kategori.',
-        ]);
+        return redirect()->back()->with('success', 'Berhasil menambah kategori.');
     }
 
     /**
@@ -75,7 +66,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return Inertia::render('Category/Edit', [
+        return view('dashboard.category.edit', [
             'category' => $category,
         ]);
     }
@@ -89,21 +80,13 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        $data = $request->validated();
-
         try {
-            $category->update($data);
+            $category->update($request->validated());
         } catch (\Throwable $th) {
-            return redirect()->back()->with([
-                'alertType' => 'error',
-                'alertMessage' => 'Terjadi kesalahan: ' . $th->getMessage(),
-            ]);
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $th->getMessage());
         }
 
-        return redirect()->back()->with([
-            'alertType' => 'success',
-            'alertMessage' => 'Berhasil memperbarui kategori.',
-        ]);
+        return redirect()->back()->with('success', 'Berhasil memperbarui kategori.');
     }
 
     /**
@@ -117,15 +100,9 @@ class CategoryController extends Controller
         try {
             $category->delete();
         } catch (\Throwable $th) {
-            return redirect()->back()->with([
-                'alertType' => 'error',
-                'alertMessage' => 'Terjadi kesalahan: ' . $th->getMessage(),
-            ]);
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $th->getMessage());
         }
 
-        return redirect()->back()->with([
-            'alertType' => 'success',
-            'alertMessage' => 'Berhasil menghapus kategori.',
-        ]);
+        return redirect()->back()->with('success', 'Berhasil menghapus kategori.');
     }
 }

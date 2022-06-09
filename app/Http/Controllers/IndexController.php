@@ -5,14 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\View;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
-use Inertia\Inertia;
 
 class IndexController extends Controller
 {
-    public $data;
-
-    public function __construct()
+    public function index()
     {
         $blogs = Blog::query()
             ->orderBy('created_at', 'desc')
@@ -20,37 +18,9 @@ class IndexController extends Controller
             ->withCount('views')
             ->get();
 
-        $blogs_data = $blogs
-            ->append(['thumbnail_url', 'formatted_date'])
-            ->map(function($blog) {
-                return [
-                    'id' => $blog->id,
-                    'slug' => $blog->slug,
-                    'user' => $blog->user,
-                    'title' => $blog->title,
-                    'views_count' => $blog->views_count,
-                    'category' => $blog->category->name,
-                    'formattedDate' => $blog->formatted_date,
-                    'thumbnail_url' => $blog->thumbnail_url,
-                    'description' => $blog->description,
-                ];
-            });
-
-        $data = collect([
-            'blogs' => $blogs_data,
-            'latestBlogs' => $blogs_data->take(5),
-            'categories' => Category::query()
-                ->with('blogs')
-                ->withCount('blogs')
-                ->get(),
+        return view('blog.index', [
+            'blogs' => $blogs,
         ]);
-
-        $this->data = $data;
-    }
-
-    public function index()
-    {
-        return Inertia::render('Welcome', $this->data->toArray());
     }
 
     public function show(Blog $blog)
@@ -67,63 +37,42 @@ class IndexController extends Controller
             60 * 10 // 10 minutes per 1 view
         );
 
-        $blog
-            ->load(['user', 'category'])
-            ->loadCount('views')
-            ->append(['thumbnail_url', 'formatted_date']);
-
-        return Inertia::render('Show', $this->data->put('blog', $blog->toArray())->toArray());
+        return view('blog.show', [
+            'blog' => $blog
+                ->load(['user', 'category'])
+                ->loadCount('views')
+        ]);
     }
 
     public function category(Category $category)
     {
-        $blogs = $category
-            ->blogs()
-            ->orderBy('created_at', 'desc')
-            ->withCount('views')
-            ->with('user')
-            ->get()
-            ->append(['thumbnail_url', 'formatted_date'])
-            ->map(function($blog) {
-                return [
-                    'id' => $blog->id,
-                    'slug' => $blog->slug,
-                    'user' => $blog->user,
-                    'title' => $blog->title,
-                    'category' => $blog->category->name,
-                    'formattedDate' => $blog->formatted_date,
-                    'thumbnail_url' => $blog->thumbnail_url,
-                    'description' => $blog->description,
-                    'views_count' => $blog->views_count,
-                ];
-            });
-
-        return Inertia::render('Category', $this->data->put('blogs', $blogs->toArray())->put('category', $category)->toArray());
+        return view('blog.category', [
+            'category' => $category,
+            'blogs' => $category
+                ->blogs()
+                ->orderBy('created_at', 'desc')
+                ->withCount('views')
+                ->with('user')
+                ->get(),
+        ]);
     }
 
-    public function search(string $searchQuery)
+    public function search(Request $request)
     {
-        $blogs = Blog::query()
-            ->orderBy('created_at', 'desc')
-            ->where('title', 'like', "%$searchQuery%")
-            ->withCount('views')
-            ->with(['user', 'category'])
-            ->get()
-            ->append(['thumbnail_url', 'formatted_date'])
-            ->map(function($blog) {
-                return [
-                    'id' => $blog->id,
-                    'slug' => $blog->slug,
-                    'user' => $blog->user,
-                    'title' => $blog->title,
-                    'category' => $blog->category->name,
-                    'formattedDate' => $blog->formatted_date,
-                    'thumbnail_url' => $blog->thumbnail_url,
-                    'description' => $blog->description,
-                    'views_count' => $blog->views_count,
-                ];
-            });
+        $request->validate([
+            'search' => ['string'],
+        ]);
 
-        return Inertia::render('Search', $this->data->put('blogs', $blogs->toArray())->put('searchQuery', $searchQuery)->toArray());
+        $search_query = $request->search;
+
+        return view('blog.search', [
+            'search_query' => $search_query,
+            'blogs' => Blog::query()
+                ->orderBy('created_at', 'desc')
+                ->where('title', 'like', "%$search_query%")
+                ->withCount('views')
+                ->with(['user', 'category'])
+                ->get(),
+        ]);
     }
 }
