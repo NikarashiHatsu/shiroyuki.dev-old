@@ -56,9 +56,8 @@
         <div
             class="
                 col-span-10
-                prose-sm md:prose
-                prose prose-slate
-                prose-h1:leading-snug
+                prose-sm md:prose prose-slate
+                md:prose-h1:leading-snug
                 prose-img:rounded-lg
                 prose-pre:!bg-gray-900 prose-code:!bg-transparent
                 relative"
@@ -71,7 +70,7 @@
             </a>
             <div class="aspect-w-16 aspect-h-10 mb-8">
                 <img
-                    class="w-full h-full rounded object-cover m-0"
+                    class="w-full h-full rounded object-cover !m-0"
                     alt="Thumbnail dari {{ $blog->title }}"
                     src="{{ $blog->thumbnail_url }}"
                 />
