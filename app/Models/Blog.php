@@ -33,6 +33,11 @@ class Blog extends Model
         return $this->hasMany(View::class);
     }
 
+    public function likes(): HasMany
+    {
+        return $this->hasMany(Like::class);
+    }
+
     public function getDescriptionTrimmedAttribute(): string
     {
         return mb_strimwidth($this->description, 0, 100, '...');
