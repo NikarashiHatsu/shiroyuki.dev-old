@@ -2,7 +2,7 @@
     <x-slot:header>
         <meta property="og:title" content="Hasil pencarian pada shiroyuki.dev: {{ $search_query }}" />
         <meta property="og:type" content="article" />
-        <meta property="og:image" itemProp="image" content={DefaultBanner} />
+        <meta property="og:image" itemProp="image" content={{ asset('images/devsnote-default-banner.png') }} />
         <meta property="og:image:alt" content="Shiroyuki.dev adalah blog yang memuat pengembangan web terbaru. Biasanya mengisi konten tentang Laravel, Flutter, dan hal lainnya." />
         <meta property="og:url" content="{{ route('search', ['search' => $search_query]) }}" />
         <meta property="og:description" content="Shiroyuki.dev adalah blog yang memuat pengembangan web terbaru. Biasanya mengisi konten tentang Laravel, Flutter, dan hal lainnya." />
