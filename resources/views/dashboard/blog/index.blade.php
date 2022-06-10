@@ -15,8 +15,7 @@
                     <th width="200">Judul</th>
                     <th width="500">Deskripsi</th>
                     <th width="100">Status</th>
-                    <th width="150">View</th>
-                    <th width="150">Komentar</th>
+                    <th width="200">Statistik</th>
                     <th width="250">Aksi</th>
                 </tr>
             </thead>
@@ -42,15 +41,19 @@
                             {!! $blog->status_badge !!}
                         </td>
                         <td>
-                            <div class="flex flex-col items-center">
-                                <x-phosphor-eye width="16" height="16" />
-                                {{ $blog->views_count }}
-                            </div>
-                        </td>
-                        <td>
-                            <div class="flex flex-col items-center">
-                                <x-phosphor-chat width="16" height="16" />
-                                {{ $blog->comments_count }}
+                            <div class="flex justify-around">
+                                <div class="flex flex-col items-center">
+                                    <x-phosphor-eye width="16" height="16" />
+                                    {{ $blog->views_count }}
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <x-phosphor-heart width="16" height="16" />
+                                    {{ $blog->likes_count }}
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <x-phosphor-chat width="16" height="16" />
+                                    {{ $blog->comments_count }}
+                                </div>
                             </div>
                         </td>
                         <td>
