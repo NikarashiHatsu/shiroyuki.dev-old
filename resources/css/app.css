@@ -7,4 +7,8 @@
     .prose-sm p code, .prose-sm ul li code {
         @apply !bg-red-100 text-red-700;
     }
+
+    [x-cloak] {
+        @apply opacity-0;
+    }
 }

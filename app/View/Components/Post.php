@@ -17,6 +17,9 @@ class Post extends Component
      */
     public function __construct(Blog $blog)
     {
+        $blog->loadCount(['comments' => function($query) {
+            $query->where('is_approved', true);
+        }]);
         $this->blog = $blog;
     }
 

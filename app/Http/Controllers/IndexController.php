@@ -17,7 +17,9 @@ class IndexController extends Controller
             ->where('status', BlogEnums::PUBLISHED->name)
             ->orderBy('created_at', 'desc')
             ->with(['user', 'category'])
-            ->withCount(['views', 'likes'])
+            ->withCount(['views', 'likes', 'comments' => function($query) {
+                $query->where('is_approved', true);
+            }])
             ->get();
 
         return view('blog.index', [
@@ -46,7 +48,9 @@ class IndexController extends Controller
         return view('blog.show', [
             'blog' => $blog
                 ->load(['user', 'category'])
-                ->loadCount('views')
+                ->loadCount(['views', 'comments' => function($query) {
+                    $query->where('is_approved', true);
+                }])
         ]);
     }
 

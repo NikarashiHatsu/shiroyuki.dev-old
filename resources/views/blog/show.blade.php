@@ -47,7 +47,7 @@
                         </button>
                     </span>
                     <span class="text-sm">
-                        0
+                        {{ $blog->comments_count }}
                     </span>
                 </div>
             </div>
@@ -86,6 +86,16 @@
             </div>
 
             @markdown($blog->description)
+
+            <hr class="!my-12" />
+
+            <h3 class="!mb-4 !md:mb-0">
+                Komentar
+            </h3>
+
+            @livewire('components.comment', [
+                'blog' => $blog
+            ])
         </div>
     </div>
 </x-guest-layout>

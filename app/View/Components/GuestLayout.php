@@ -19,7 +19,9 @@ class GuestLayout extends Component
         return view('layouts.guest', [
             'latest_blogs' => Blog::query()
                 ->where('status', BlogEnums::PUBLISHED->name)
-                ->withCount(['views', 'likes'])
+                ->withCount(['views', 'likes', 'comments' => function($query) {
+                    $query->where('is_approved', true);
+                }])
                 ->orderByDesc('created_at')
                 ->get()
                 ->take(5),

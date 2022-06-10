@@ -37,7 +37,9 @@
             <div class="w-1 h-1 bg-gray-500 rounded-full mx-2"></div>
             <div class="flex">
                 <x-phosphor-chat width="14" height="14" />
-                <span class="text-xs ml-1">0</span>
+                <span class="text-xs ml-1">
+                    {{ $blog->comments_count }}
+                </span>
             </div>
         </div>
         <div class="flex items-center text-sm mt-2 mb-1 text-gray-500">

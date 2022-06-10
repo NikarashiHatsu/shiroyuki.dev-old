@@ -30,7 +30,10 @@
         "webpack-node-externals": "^3.0.0"
     },
     "dependencies": {
+        "dompurify": "^2.3.8",
         "highlight.js": "^11.5.1",
-        "highlightjs-blade": "github:miken32/highlightjs-blade"
+        "highlightjs-blade": "github:miken32/highlightjs-blade",
+        "marked": "^4.0.16",
+        "sanitize-html": "^2.7.0"
     }
 }
