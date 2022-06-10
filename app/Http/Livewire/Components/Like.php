@@ -10,25 +10,19 @@ class Like extends Component
 {
     public $blog;
 
-    public function like()
+    public function like(): void
     {
-        $user_id = auth()->id();
-        $ip_address = auth()->id() == null ? request()->ip() : null;
-
-        if ($this->blog->likes->where('user_id', $user_id)->count() > 0) {
-            auth()->id() == null
-                ? ModelsLike::where('ip_address', $ip_address)->where('blog_id', $this->blog->id)->delete()
-                : ModelsLike::where('user_id', $user_id)->where('blog_id', $this->blog->id)->delete();
-        } else {
-            auth()->id() == null
-                ? ModelsLike::create([
-                    'ip_address' => $ip_address,
-                    'blog_id' => $this->blog->id,
-                ])
-                : ModelsLike::create([
-                    'user_id' => $user_id,
-                    'blog_id' => $this->blog->id,
-                ]);
+        if ($this->blog->isLiked()) {
+            $this->blog->removeLike();
+        } elseif (auth()->user()) {
+            $this->blog->likes()->create([
+                'user_id' => auth()->id(),
+            ]);
+        } elseif (($ip = request()->ip()) && ($userAgent = request()->userAgent())) {
+            $this->blog->likes()->create([
+                'ip_address' => $ip,
+                'user_agent' => $userAgent,
+            ]);
         }
     }
 
