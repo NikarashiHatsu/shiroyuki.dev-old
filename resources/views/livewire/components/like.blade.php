@@ -14,6 +14,6 @@
         </button>
     </span>
     <p class="text-sm">
-        {{ $count }}
+        {{ $likes_count }}
     </p>
 </div>
