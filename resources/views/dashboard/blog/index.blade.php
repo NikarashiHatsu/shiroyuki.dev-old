@@ -14,6 +14,7 @@
                     <th width="200">Thumbnail</th>
                     <th width="200">Judul</th>
                     <th width="500">Deskripsi</th>
+                    <th width="100">Status</th>
                     <th width="150">View</th>
                     <th width="150">Komentar</th>
                     <th width="250">Aksi</th>
@@ -36,6 +37,9 @@
                         </td>
                         <td>
                             <p class="break-words whitespace-pre-wrap line-clamp-5">{{ $blog->description_trimmed }}</p>
+                        </td>
+                        <td>
+                            {!! $blog->status_badge !!}
                         </td>
                         <td>
                             <div class="flex flex-col items-center">

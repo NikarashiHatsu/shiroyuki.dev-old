@@ -28,6 +28,7 @@ class UpdateBlogRequest extends FormRequest
             'thumbnail' => ['nullable'],
             'title' => ['required', 'string'],
             'description' => ['required'],
+            'status' => ['required', 'in:DRAFT,PUBLISHED,ARCHIVED,PRIVATE'],
         ];
     }
 

@@ -30,6 +30,7 @@ class StoreBlogRequest extends FormRequest
             'thumbnail' => ['required', 'image', 'max:2048'],
             'title' => ['required', 'string'],
             'description' => ['required'],
+            'status' => ['required', 'in:DRAFT,PUBLISHED,ARCHIVED,PRIVATE'],
         ];
     }
 

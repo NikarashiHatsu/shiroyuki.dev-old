@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\BlogEnums;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Blog;
@@ -34,6 +35,7 @@ class BlogController extends Controller
     {
         return view('dashboard.blog.create', [
             'categories' => Category::all(),
+            'statuses' => BlogEnums::cases(),
         ]);
     }
 
@@ -81,6 +83,7 @@ class BlogController extends Controller
         return view('dashboard.blog.edit', [
             'blog' => $blog,
             'categories' => Category::all(),
+            'statuses' => BlogEnums::cases(),
         ]);
     }
 
@@ -98,6 +101,7 @@ class BlogController extends Controller
                 'title',
                 'description',
                 'category_id',
+                'status',
             ]));
 
             if ($request->hasFile('thumbnail')) {

@@ -5,7 +5,14 @@
 >
     <x-alerts />
 
-    <form method="POST" action="{{ route('dashboard.blog.store') }}" enctype="multipart/form-data">
+    <form
+        x-data="{
+            slug: '',
+        }"
+        method="POST"
+        action="{{ route('dashboard.blog.store') }}"
+        enctype="multipart/form-data"
+    >
         @csrf
         <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
         <div class="grid grid-cols-12 grid-flow-row gap-4">
@@ -15,6 +22,7 @@
                         <span class="label-text">Judul</span>
                     </label>
                     <input
+                        x-on:keyup="slug = $event.target.value.replaceAll(/[`~!@#$%^&*()_|+\-=?;:',.<>\{\}\[\]\\\/]/gi, '').replaceAll(' ', '-').toLowerCase()"
                         type="text"
                         name="title"
                         class="input input-bordered w-full"
@@ -53,10 +61,12 @@
                         <span class="label-text">Slug</span>
                     </label>
                     <input
+                        x-model="slug"
                         type="text"
                         name="slug"
-                        class="input input-bordered w-full"
+                        class="input input-bordered input-disabled w-full"
                         value="{{ old('slug') }}"
+                        readonly
                     />
                     @error('slug')
                         <p class="text-red-500 mt-2 text-sm">
@@ -103,15 +113,32 @@
                 </div>
             </div>
 
-            <div class="col-span-12">
-                <div class="flex justify-end">
-                    <button class="btn btn-primary">
-                        <x-phosphor-floppy-disk width="16" height="16" />
-                        <span class="ml-2">
-                            Simpan
-                        </span>
-                    </button>
+            <div class="flex items-end justify-end col-span-12">
+                <div class="form-group">
+                    <label class="label">
+                        <span class="label-text">Status</span>
+                    </label>
+                    <select name="status" id="status" class="select select-bordered w-full">
+                        <option value="">-Pilih Status-</option>
+                        @foreach ($statuses as $status)
+                            <option value="{{ $status->name }}">
+                                {{ $status->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('status')
+                        <p class="text-red-500 mt-2 text-sm">
+                            {{ $message }}
+                        </p>
+                    @enderror
                 </div>
+
+                <button class="btn btn-primary ml-4">
+                    <x-phosphor-floppy-disk width="16" height="16" />
+                    <span class="ml-2">
+                        Simpan
+                    </span>
+                </button>
             </div>
         </div>
     </form>

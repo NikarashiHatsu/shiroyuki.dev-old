@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\BlogEnums;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -53,6 +54,27 @@ class Blog extends Model
         return $this->created_at->isoFormat('LL');
     }
 
+    public function getStatusBadgeAttribute()
+    {
+        switch ($this->status) {
+            case BlogEnums::DRAFT->name:
+                return "<span class='badge badge-ghost'>" . BlogEnums::DRAFT->name . "</span>";
+                break;
+            case BlogEnums::PUBLISHED->name:
+                return "<span class='badge badge-success'>" . BlogEnums::PUBLISHED->name . "</span>";
+                break;
+            case BlogEnums::ARCHIVED->name:
+                return "<span class='badge badge-error'>" . BlogEnums::ARCHIVED->name . "</span>";
+                break;
+            case BlogEnums::PRIVATE->name:
+                return "<span class='badge badge-warning'>" . BlogEnums::PRIVATE->name . "</span>";
+                break;
+            default:
+                return "<span class='badge badge-ghost'>TIDAK DIKETAHUI</span>";
+                break;
+        }
+    }
+
     protected $guarded = [
         'id',
     ];
@@ -63,6 +85,7 @@ class Blog extends Model
         'category_id',
         'title',
         'description',
+        'status',
         'thumbnail',
     ];
 }

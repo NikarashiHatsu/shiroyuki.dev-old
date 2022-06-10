@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\BlogEnums;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\View;
@@ -13,6 +14,7 @@ class IndexController extends Controller
     public function index()
     {
         $blogs = Blog::query()
+            ->where('status', BlogEnums::PUBLISHED->name)
             ->orderBy('created_at', 'desc')
             ->with(['user', 'category'])
             ->withCount(['views', 'likes'])
@@ -25,6 +27,10 @@ class IndexController extends Controller
 
     public function show(Blog $blog)
     {
+        abort_if(
+            $blog->status === BlogEnums::DRAFT->name ||
+            $blog->status === BlogEnums::ARCHIVED->name, 404);
+
         RateLimiter::attempt(
             'blog.view.' . $blog->id . '.ip:' . request()->ip(),
             $perMinute = 1,
@@ -50,6 +56,7 @@ class IndexController extends Controller
             'category' => $category,
             'blogs' => $category
                 ->blogs()
+                ->where('status', BlogEnums::PUBLISHED->name)
                 ->orderBy('created_at', 'desc')
                 ->withCount(['views', 'likes'])
                 ->with('user')
@@ -70,6 +77,7 @@ class IndexController extends Controller
             'blogs' => Blog::query()
                 ->orderBy('created_at', 'desc')
                 ->where('title', 'like', "%$search_query%")
+                ->where('status', BlogEnums::PUBLISHED->name)
                 ->withCount(['views', 'likes'])
                 ->with(['user', 'category'])
                 ->get(),
