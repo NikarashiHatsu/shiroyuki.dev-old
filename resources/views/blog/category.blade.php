@@ -39,6 +39,7 @@
                 <x-post :blog="$blog" />
             </div>
         @endforeach
+        <ins class="col-span-12 sm:col-span-6 md:col-span-4 adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-bm+bp-3b-6w+pb" data-ad-client="ca-pub-6845430784240217" data-ad-slot="5129573914"></ins>
     </div>
 
     {{ $blogs->links() }}

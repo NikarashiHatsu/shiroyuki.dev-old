@@ -34,6 +34,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}?v={{ config('app.version') }}">
         <script src="{{ asset('js/app.js') }}?v={{ config('app.version') }}" defer></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6845430784240217" crossorigin="anonymous"></script>
         @livewireStyles()
     </head>
     <body>
@@ -151,6 +152,7 @@
                                         </a>
                                     </div>
                                 @endforeach
+                                <ins class="my-2 adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-bm+bp-3b-6w+pb" data-ad-client="ca-pub-6845430784240217" data-ad-slot="5129573914"></ins>
                             </div>
                         </div>
                     </div>
@@ -158,5 +160,8 @@
             </div>
         </div>
         @livewireScripts()
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
     </body>
 </html>

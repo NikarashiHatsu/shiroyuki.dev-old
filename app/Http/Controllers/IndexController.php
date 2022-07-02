@@ -20,7 +20,7 @@ class IndexController extends Controller
             ->withCount(['views', 'likes', 'comments' => function($query) {
                 $query->where('is_approved', true);
             }])
-            ->paginate(12);
+            ->paginate(11);
 
         return view('blog.index', [
             'blogs' => $blogs,
@@ -64,7 +64,7 @@ class IndexController extends Controller
                 ->orderBy('created_at', 'desc')
                 ->withCount(['views', 'likes'])
                 ->with('user')
-                ->paginate(12),
+                ->paginate(11),
         ]);
     }
 
@@ -84,7 +84,7 @@ class IndexController extends Controller
                 ->where('status', BlogEnums::PUBLISHED->name)
                 ->withCount(['views', 'likes'])
                 ->with(['user', 'category'])
-                ->paginate(12),
+                ->paginate(11),
         ]);
     }
 }

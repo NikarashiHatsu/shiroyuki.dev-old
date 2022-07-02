@@ -101,6 +101,8 @@
 
             <hr class="!my-12" />
 
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6845430784240217" data-ad-slot="2306849892" data-ad-format="auto" data-full-width-responsive="true"></ins>
+
             <h3 class="!mb-4 !md:mb-0">
                 Komentar
             </h3>
