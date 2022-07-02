@@ -13,6 +13,14 @@ module.exports = {
             fontFamily: {
                 sans: ['Poppins', ...defaultTheme.fontFamily.sans],
             },
+            typography: {
+                DEFAULT: {
+                    css: {
+                        "code::before": {content: ''},
+                        "code::after": {content: ''},
+                    },
+                },
+            },
         },
     },
 

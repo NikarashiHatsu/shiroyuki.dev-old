@@ -4,7 +4,7 @@
             <img
                 src="{{ $blog->thumbnail_url }}"
                 alt="{{ $blog->title }}"
-                class='w-full h-full rounded-t'
+                class='w-full h-full rounded-t object-cover'
             />
         </div>
         <div class="absolute bottom-0 left-0 p-2">
