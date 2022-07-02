@@ -135,6 +135,12 @@
                                                         </span>
                                                     </div>
                                                 </div>
+                                                <div class="flex mt-1">
+                                                    <x-phosphor-clock width="14" height="14" />
+                                                    <span class="text-xs ml-1">
+                                                        {{ $blog->read_duration }} menit
+                                                    </span>
+                                                </div>
                                                 <p class="text-sm my-1 text-gray-500">
                                                     {{ $blog->user->name }}
                                                 </p>

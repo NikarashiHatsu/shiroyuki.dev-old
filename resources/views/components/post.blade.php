@@ -41,6 +41,13 @@
                     {{ $blog->comments_count }}
                 </span>
             </div>
+            <div class="w-1 h-1 bg-gray-500 rounded-full mx-2"></div>
+            <div class="flex">
+                <x-phosphor-clock width="14" height="14" />
+                <span class="text-xs ml-1">
+                    {{ $blog->read_duration }} menit
+                </span>
+            </div>
         </div>
         <div class="flex items-center text-sm mt-2 mb-1 text-gray-500">
             <span>

@@ -54,6 +54,10 @@
                                     <x-phosphor-chat width="16" height="16" />
                                     {{ $blog->comments_count }}
                                 </div>
+                                <div class="flex flex-col items-center">
+                                    <x-phosphor-clock width="16" height="16" />
+                                    {{ $blog->read_duration }} menit
+                                </div>
                             </div>
                         </td>
                         <td>

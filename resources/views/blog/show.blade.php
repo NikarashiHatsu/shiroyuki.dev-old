@@ -50,6 +50,17 @@
                         {{ $blog->comments_count }}
                     </span>
                 </div>
+
+                <div class="flex flex-col items-center mt-4">
+                    <span class="tooltip" data-tip="Komentar">
+                        <button class="p-2 rounded-full cursor-default">
+                            <x-phosphor-clock width="24" height="24" />
+                        </button>
+                    </span>
+                    <span class="text-sm">
+                        {{ $blog->read_duration }} menit
+                    </span>
+                </div>
             </div>
         </div>
 
