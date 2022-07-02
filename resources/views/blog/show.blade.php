@@ -25,13 +25,13 @@
     <div class="grid grid-cols-12 grid-flow-row sm:gap-4 md:gap-6">
         <div class="col-span-2">
             <div class="sticky top-0 left-0 pt-16 flex flex-col items-start sm:items-center">
-                <div class="flex flex-col items-center">
+                <div class="flex flex-col items-center text-xs sm:text-base">
                     <span class="tooltip" data-tip="Pembaca">
                         <button class="p-2 rounded-full cursor-default">
-                            <x-phosphor-eye width="24" height="24" />
+                            <x-phosphor-eye class="w-4 sm:w-6 h-4 sm:h-6" />
                         </button>
                     </span>
-                    <span class="text-sm">
+                    <span>
                         {{ $blog->views_count }}
                     </span>
                 </div>
@@ -40,25 +40,26 @@
                     'blog' => $blog->id,
                 ])
 
-                <div class="flex flex-col items-center mt-4">
+                <div class="flex flex-col items-center mt-2 sm:mt-4 text-xs sm:text-base">
                     <span class="tooltip" data-tip="Komentar">
                         <button class="p-2 rounded-full cursor-default">
-                            <x-phosphor-chat width="24" height="24" />
+                            <x-phosphor-chat class="w-4 sm:w-6 h-4 sm:h-6" />
                         </button>
                     </span>
-                    <span class="text-sm">
+                    <span>
                         {{ $blog->comments_count }}
                     </span>
                 </div>
 
-                <div class="flex flex-col items-center mt-4">
+                <div class="flex flex-col items-center mt-2 sm:mt-4 text-xs sm:text-base">
                     <span class="tooltip" data-tip="Komentar">
                         <button class="p-2 rounded-full cursor-default">
-                            <x-phosphor-clock width="24" height="24" />
+                            <x-phosphor-clock class="w-4 sm:w-6 h-4 sm:h-6" />
                         </button>
                     </span>
-                    <span class="text-sm">
-                        {{ $blog->read_duration }} menit
+                    <span class="text-center sm:text-left">
+                        {{ $blog->read_duration }}
+                        <span>mnt</span>
                     </span>
                 </div>
             </div>
