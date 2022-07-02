@@ -1,4 +1,4 @@
-<a href="{{ route('show', $blog->slug) }}" class="flex flex-col group border rounded">
+<a href="{{ route('show', $blog->slug) }}" class="flex flex-col group border rounded h-full">
     <div class="relative">
         <div class="aspect-w-16 aspect-h-10">
             <img
