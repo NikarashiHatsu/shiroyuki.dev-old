@@ -108,7 +108,7 @@ class Blog extends Model
     public function getReadDurationAttribute()
     {
         $removed_base64_image_descriptive = preg_replace("(data:image\/[^;]+;base64[^\"]+)", " ", $this->description);
-        $total_words = str_word_count(strip_tags($removed_base64_image_descriptive));
+        $total_words = str_word_count($removed_base64_image_descriptive);
         $minutes_to_read = round($total_words / 200);
 
         return (int) max(1, $minutes_to_read);
