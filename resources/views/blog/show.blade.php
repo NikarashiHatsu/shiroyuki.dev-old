@@ -68,11 +68,12 @@
         <div
             class="
                 col-span-10
-                prose-sm md:prose prose-slate
-                md:prose-h1:leading-snug
-                prose-img:rounded-lg prose-ul:list-disc prose-ol:list-decimal
-                prose-pre:!bg-gray-900 prose-code:!bg-transparent
-                sm:prose-pre:!bg-gray-900 sm:prose-code:!bg-transparent
+                prose-sm md:prose
+                prose-code:bg-red-100 md:prose-code:bg-red-100 prose-code:text-red-700 md:prose-code:text-red-700 prose-code:rounded md:prose-code:rounded prose-code:px-1
+                prose-ol:list-decimal
+                prose-ul:list-disc
+                prose-a:underline
+                md:prose-pre:bg-transparent md:prose-pre:p-0
                 relative"
         >
             <a class="btn btn-ghost mb-4" href={{ route('index') }}>
