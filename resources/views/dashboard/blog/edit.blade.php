@@ -103,6 +103,7 @@
                             name="description"
                             id="description"
                             value="{{ $blog->description }}"
+                            required
                         />
                         <div
                             x-on:keyup="document.querySelector('#description').value = editor.getMarkdown()"

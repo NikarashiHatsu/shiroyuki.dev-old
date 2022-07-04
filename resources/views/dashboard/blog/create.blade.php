@@ -27,6 +27,7 @@
                         name="title"
                         class="input input-bordered w-full"
                         value="{{ old('title') }}"
+                        required
                     />
                     @error('title')
                         <p class="text-red-500 mt-2 text-sm">
@@ -40,7 +41,12 @@
                     <label class="label">
                         <span class="label-text">Kategori</span>
                     </label>
-                    <select name="category_id" id="category_id" class="select select-bordered w-full">
+                    <select
+                        name="category_id"
+                        id="category_id"
+                        class="select select-bordered w-full"
+                        required
+                    >
                         <option value="">-Pilih Kategori-</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">
@@ -67,6 +73,7 @@
                         class="input input-bordered input-disabled w-full"
                         value="{{ old('slug') }}"
                         readonly
+                        required
                     />
                     @error('slug')
                         <p class="text-red-500 mt-2 text-sm">
@@ -85,6 +92,7 @@
                         name="thumbnail"
                         class="input input-bordered w-full"
                         value="{{ old('thumbnail') }}"
+                        required
                     />
                     @error('thumbnail')
                         <p class="text-red-500 mt-2 text-sm">
@@ -99,7 +107,13 @@
                         <span class="label-text">Konten</span>
                     </label>
                     <div x-data>
-                        <input type="hidden" name="description" id="description" value="" />
+                        <input
+                            type="hidden"
+                            name="description"
+                            id="description"
+                            value=""
+                            required
+                        />
                         <div
                             x-on:keyup="document.querySelector('#description').value = editor.getMarkdown()"
                             id="editor"
@@ -118,7 +132,12 @@
                     <label class="label">
                         <span class="label-text">Status</span>
                     </label>
-                    <select name="status" id="status" class="select select-bordered w-full">
+                    <select
+                        name="status"
+                        id="status"
+                        class="select select-bordered w-full"
+                        required
+                    >
                         <option value="">-Pilih Status-</option>
                         @foreach ($statuses as $status)
                             <option value="{{ $status->name }}">
