@@ -90,7 +90,7 @@
                 />
             </div>
             <h1 class="mb-4">
-                {{ $blog->blog_translation->title }}
+                {{ request()->routeIs('show.en') ? $blog->blog_translation->title : $blog->title }}
             </h1>
             <div class="flex items-center italic opacity-75">
                 <span>{{ $blog->user->name }}</span>
@@ -98,7 +98,7 @@
                 <span>{{ $blog->formatted_date }}</span>
             </div>
 
-            @markdown($blog->blog_translation->description)
+            @markdown(request()->routeIs('show.en') ? $blog->blog_translation->description : $blog->description)
 
             <hr class="!my-12" />
 
