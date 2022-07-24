@@ -90,7 +90,7 @@
                 />
             </div>
             <h1 class="mb-4">
-                {{ $blog->title }}
+                {{ $blog->blog_translation->title }}
             </h1>
             <div class="flex items-center italic opacity-75">
                 <span>{{ $blog->user->name }}</span>
@@ -98,7 +98,7 @@
                 <span>{{ $blog->formatted_date }}</span>
             </div>
 
-            @markdown($blog->description)
+            @markdown($blog->blog_translation->description)
 
             <hr class="!my-12" />
 

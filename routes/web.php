@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('index');
 Route::get('/blog/{blog:slug}', [\App\Http\Controllers\IndexController::class, 'show'])->name('show');
+Route::get('/blog/{blog:slug}/en', [\App\Http\Controllers\IndexController::class, 'show_en'])->name('show.en');
 Route::get('/category/{category:name}', [\App\Http\Controllers\IndexController::class, 'category'])->name('category');
 Route::get('/search', [\App\Http\Controllers\IndexController::class, 'search'])->name('search');
 
